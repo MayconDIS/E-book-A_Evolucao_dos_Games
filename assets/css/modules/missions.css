@@ -29,7 +29,7 @@
   background: linear-gradient(90deg, rgba(224, 32, 32, 0.14), transparent 60%);
 }
 
-.briefing.is-alert .briefing-label { color: var(--alert); }
+.briefing.is-alert .briefing-label { color: var(--alert-ink); }
 
 /* --- Ganhos x Riscos: dois painéis de HUD lado a lado --- */
 .ledger {
@@ -58,7 +58,7 @@
 .ledger-col.is-gain { border-top: 4px solid var(--money); }
 .ledger-col.is-gain h3 { color: var(--money); }
 .ledger-col.is-risk { border-top: 4px solid var(--alert); }
-.ledger-col.is-risk h3 { color: var(--alert); }
+.ledger-col.is-risk h3 { color: var(--alert-ink); }
 
 .ledger-col ul { list-style: none; }
 
@@ -145,6 +145,11 @@
 .dossier-sheet .panel h2 { color: #14120c; }
 .dossier-sheet .panel p { color: #45402f; }
 .dossier-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.25); }
+
+/* Sobre papel manila, os cinzas do tema escuro somem: reancorados no marrom. */
+.dossier-sheet .mission-objective { color: #55503f; }
+.dossier-sheet .hud-source { color: #55503f; }
+.dossier-sheet .panel strong { color: #14120c; }
 
 .sources { list-style: none; }
 

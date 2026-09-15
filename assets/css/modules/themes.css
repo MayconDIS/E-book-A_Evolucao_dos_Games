@@ -59,8 +59,9 @@
 .press-sheet .mission-head { border-bottom-color: rgba(0, 0, 0, 0.28); }
 .press-sheet .mission-objective { color: #5c5a4e; }
 .press-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.28); }
-.press-sheet .hud-source { color: #6a6759; }
+.press-sheet .hud-source { color: #5c5a4e; }
 .press-sheet .briefing { background: #17171a; }
+.press-sheet .briefing .briefing-label { color: var(--alert-ink); }
 .press-sheet .briefing p { color: #e6e6ea; }
 .press-sheet .objectives li { color: #3e3d35; }
 .press-sheet .cliffhanger { color: #14140f; }
@@ -78,8 +79,8 @@
 
 /* Missão 06 — 2008: a era HD, na paleta lavada de GTA IV */
 .theme-realism {
-  --mission: var(--steel);
-  --mission-soft: rgba(143, 163, 184, 0.12);
+  --mission: var(--hd-washed);
+  --mission-soft: rgba(159, 179, 200, 0.12);
   background-color: #0b0f13;
 }
 
@@ -112,7 +113,7 @@
 
 /* Nível de procurado — o capítulo do custo bilionário */
 .theme-wanted {
-  --mission: var(--alert);
+  --mission: var(--alert-ink);
   --mission-soft: rgba(224, 32, 32, 0.12);
   background-color: #140505;
 }
@@ -124,8 +125,8 @@
 
 /* Missão bônus — o que vem depois de Leonida */
 .theme-horizon {
-  --mission: var(--violet);
-  --mission-soft: rgba(168, 85, 247, 0.12);
+  --mission: var(--violet-ink);
+  --mission-soft: rgba(192, 132, 252, 0.12);
   background-color: #100620;
 }
 

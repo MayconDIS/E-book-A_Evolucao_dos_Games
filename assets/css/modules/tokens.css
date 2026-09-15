@@ -23,7 +23,7 @@
   --vice-teal: #00c2c7;
 
   /* --- Eras adicionais da série --- */
-  --steel: #8fa3b8;        /* GTA IV: a paleta lavada da era HD */
+  --hd-washed: #9fb3c8;    /* GTA IV: o azul lavado da era HD (acento, não superfície) */
   --desert: #e0a32e;      /* San Andreas: deserto e Las Venturas */
   --violet: #a855f7;       /* o horizonte, depois de Leonida */
   --vice-teal-deep: #0fb3b8;
@@ -31,6 +31,10 @@
   /* --- HUD --- */
   --wanted: #ffd400;
   --alert: #e02020;
+  /* Os tons acima são saturados para preenchimento. Em texto pequeno sobre
+     fundo escuro eles não alcançam 4.5:1 — estas são as versões de texto. */
+  --alert-ink: #ff6a6a;
+  --violet-ink: #c084fc;
   --money: #7ab317;
   --dossier: #e8dcc0;
 
