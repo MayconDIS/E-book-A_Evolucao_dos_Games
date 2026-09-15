@@ -25,19 +25,11 @@
   background-color: #04141a;
 }
 
-.theme-neon .panel {
-  background: linear-gradient(160deg, #0a1f26 0%, #13202e 100%);
-}
-
 /* Missão 04 — 2004: San Andreas, no ocre do deserto e de Las Venturas */
 .theme-desert {
   --mission: var(--desert);
   --mission-soft: rgba(224, 163, 46, 0.12);
   background-color: #17110a;
-}
-
-.theme-desert .panel {
-  background: linear-gradient(165deg, #1e1810 0%, #14110c 100%);
 }
 
 /* Missão 05 — a controvérsia: papel de jornal no meio do neon.
@@ -84,10 +76,6 @@
   background-color: #0b0f13;
 }
 
-.theme-realism .panel {
-  background: linear-gradient(170deg, #151a20 0%, #10141a 100%);
-}
-
 /* Missão 05 — 2013: três protagonistas, na cor de Trevor */
 .theme-phenomenon {
   --mission: var(--trevor);
@@ -102,13 +90,6 @@
   background-color: #17041a;
 }
 
-.theme-leonida .panel {
-  background:
-    radial-gradient(120% 80% at 80% 0%, rgba(255, 45, 149, 0.18), transparent 60%),
-    linear-gradient(160deg, #1b0a24 0%, #2b0b3f 60%, #12121a 100%);
-  border-color: var(--ink);
-}
-
 .theme-leonida .panel::before { background: var(--sunset); height: 8px; }
 
 /* Nível de procurado — o capítulo do custo bilionário */
@@ -116,11 +97,6 @@
   --mission: var(--alert-ink);
   --mission-soft: rgba(224, 32, 32, 0.12);
   background-color: #140505;
-}
-
-.theme-wanted .panel {
-  background: linear-gradient(180deg, #16060a 0%, #0c0c10 70%);
-  border-color: var(--ink);
 }
 
 /* Missão bônus — o que vem depois de Leonida */
@@ -144,4 +120,104 @@
 .theme-gold {
   --mission: var(--vice-gold);
   background-color: #0b0a06;
+}
+
+/* ============================================================
+   FUNDOS EM DEGRADE
+   Duas camadas, como na folha de Leonida: um brilho radial na cor
+   da missao, vindo do alto a direita, sobre um degrade linear escuro.
+   background-color fica separado de background-image de proposito —
+   é ele que garante contraste caso a imagem nao pinte.
+   ============================================================ */
+
+.theme-neutral .panel {
+  /* Neutro de propósito: é a folha de índice, e o cinza puro a separa
+     da folha de GTA IV, que também puxa para o azul-acinzentado. */
+  background-color: #0f0f11;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 255, 255, 0.10), transparent 60%),
+    linear-gradient(160deg, #1a1a1d 0%, #202024 60%, #0f0f11 100%);
+}
+
+.theme-topdown .panel {
+  background-color: #0a1008;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(143, 206,   0, 0.18), transparent 60%),
+    linear-gradient(160deg, #0f1c0a 0%, #162712 60%, #0a1008 100%);
+}
+
+.theme-liberty .panel {
+  background-color: #0a1018;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba( 74, 137, 217, 0.18), transparent 60%),
+    linear-gradient(160deg, #0b1626 0%, #12253a 60%, #0a1018 100%);
+}
+
+.theme-neon .panel {
+  background-color: #08161c;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(  0, 194, 199, 0.18), transparent 60%),
+    linear-gradient(160deg, #07202a 0%, #0d2f3a 60%, #08161c 100%);
+}
+
+.theme-desert .panel {
+  background-color: #15110b;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(224, 163,  46, 0.18), transparent 60%),
+    linear-gradient(160deg, #20190f 0%, #2c2214 60%, #15110b 100%);
+}
+
+.theme-realism .panel {
+  background-color: #0d1116;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(159, 179, 200, 0.18), transparent 60%),
+    linear-gradient(160deg, #141a20 0%, #1b232b 60%, #0d1116 100%);
+}
+
+.theme-phenomenon .panel {
+  background-color: #130d07;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 128,   0, 0.18), transparent 60%),
+    linear-gradient(160deg, #201306 0%, #2c1c09 60%, #130d07 100%);
+}
+
+.theme-wanted .panel {
+  background-color: #120608;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(224,  32,  32, 0.18), transparent 60%),
+    linear-gradient(160deg, #1d0709 0%, #2a0c0e 60%, #120608 100%);
+}
+
+.theme-leonida .panel {
+  background-color: #12121a;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255,  45, 149, 0.18), transparent 60%),
+    linear-gradient(160deg, #1b0a24 0%, #2b0b3f 60%, #12121a 100%);
+}
+
+.theme-horizon .panel {
+  background-color: #110b1d;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(192, 132, 252, 0.18), transparent 60%),
+    linear-gradient(160deg, #180b2c 0%, #251142 60%, #110b1d 100%);
+}
+
+.theme-gold .panel {
+  background-color: #120e06;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 194,  71, 0.18), transparent 60%),
+    linear-gradient(160deg, #1c1709 0%, #282010 60%, #120e06 100%);
+}
+
+/* As duas folhas de papel ganham um degrade discreto, sem brilho:
+   qualquer cor forte aqui derrubaria o contraste do texto escuro. */
+
+.press-sheet .panel {
+  background-color: #e6e2d6;
+  background-image: linear-gradient(165deg, #f3f0e8 0%, #e9e5db 55%, #ddd8cb 100%);
+}
+
+.dossier-sheet .panel {
+  background-color: #e0d4b4;
+  background-image: linear-gradient(165deg, #f0e7d2 0%, #e8dcc0 55%, #dccfab 100%);
 }
