@@ -22,6 +22,12 @@
   --vice-gold: #ffc247;
   --vice-teal: #00c2c7;
 
+  /* --- Eras adicionais da série --- */
+  --steel: #8fa3b8;        /* GTA IV: a paleta lavada da era HD */
+  --desert: #e0a32e;      /* San Andreas: deserto e Las Venturas */
+  --violet: #a855f7;       /* o horizonte, depois de Leonida */
+  --vice-teal-deep: #0fb3b8;
+
   /* --- HUD --- */
   --wanted: #ffd400;
   --alert: #e02020;

@@ -11,30 +11,37 @@
 
 ## 📖 Sobre
 
-Do **Atari 2600 com 128 bytes de RAM** ao mundo vivo de **Leonida**, este e-book conta como a restrição técnica sempre foi a maior professora de game design — e por que ela nunca desaparece de verdade, só muda de forma.
+Este e-book usa uma única franquia como régua para medir três décadas de tecnologia: a série **Grand Theft Auto**. De 1997, quando a cidade era vista de cima em sprites, a 2026 e o pôr do sol de Leonida, cada episódio marca um limite técnico sendo rompido — e um preço sendo pago por isso.
 
 O conteúdo é organizado como uma sequência de **missões**, com briefing, objetivo e balanço de ganhos e riscos. Cada afirmação técnica fecha com a fonte usada, e o que ainda é promessa de fabricante (o caso de GTA VI) está explicitamente marcado como tal, separado do que já é resultado medido.
+
+Não é só uma história de hardware: a Missão 05 trata da crise regulatória de 2005 e da decisão que, em 2011, reconheceu videogames como expressão protegida nos Estados Unidos — o momento em que o meio deixou de ser réu.
 
 ## 🎨 Direção de Arte
 
 A identidade visual cita as duas gerações da franquia que dão nome ao tema:
 
-- **De GTA V** vem a estrutura: capa em colagem de painéis com moldura preta, HUD de missão e o sistema de cores dos protagonistas — verde Franklin, azul Michael e laranja Trevor — usado como tema de capítulo.
+- **De GTA V** vem a estrutura: capa em colagem de painéis com moldura preta, HUD de missão e o sistema de cores dos protagonistas usado como tema de capítulo.
+- **Cada era tem sua cor:** verde para a vista de cima, azul para Liberty City, teal para Vice City, ocre de deserto para San Andreas, aço lavado para GTA IV, laranja para GTA V e o rosa de Leonida para GTA VI. A folha da controvérsia quebra o neon de propósito: é papel de jornal.
 - **De GTA VI** vem a pele: o pôr do sol rosa → laranja → dourado de Leonida, grão de filme, palmeiras e skyline em silhueta.
 
 Todo o cenário é desenhado em **CSS e SVG inline**: nenhuma imagem externa, nenhuma requisição extra.
 
 ## 🗺️ Missões
 
-| # | Missão | Tema |
-|---|--------|------|
-| 01 | Restrição | Como 128 bytes de RAM viraram escola de design |
-| 02 | A Terceira Dimensão | Quando o jogo deixou de ser fase e virou lugar |
-| 03 | Leonida | GTA VI: o que a Rockstar confirmou e o que é leitura de trailer |
-| 04 | O Custo Bilionário | Nível de procurado: orçamento, crunch e monetização |
-| 05 | Fora do Radar | A contracultura indie e a hipersaturação |
-| 06 | Horizonte | Nuvem, VR e IA generativa — com os gargalos de cada uma |
-| 07 | Dossiê | Todas as fontes, com link |
+| # | Missão | Jogo / período | Tema |
+|---|--------|----------------|------|
+| 01 | Vista de Cima | GTA 1 e 2 · 1997–1999 | Mundo aberto antes do 3D |
+| 02 | Liberty City | GTA III · 2001 | A terceira dimensão e o mapa sem costura |
+| 03 | Neon | Vice City · 2002 | Ambientação vale tanto quanto hardware |
+| 04 | Escala | San Andreas · 2004 | Três cidades dentro de 32 MB |
+| 05 | A Linha de Fogo | 2005–2011 | Hot Coffee, censura e a Suprema Corte |
+| 06 | O Peso do Real | GTA IV · 2008 | RAGE, Euphoria e o custo do realismo |
+| 07 | Três Protagonistas | GTA V · 2013 | O fenômeno e o jogo como serviço |
+| 08 | O Custo Bilionário | Procurado | Orçamento, crunch e o contraponto indie |
+| 09 | Leonida | GTA VI · 2026 | O que é fato e o que é trailer |
+| 10 | Horizonte | Bônus | Nuvem, VR e IA generativa |
+| 11 | Dossiê | Fontes | Tudo com link para conferir |
 
 ## 🚀 Como Usar
 
@@ -105,8 +112,8 @@ Qualquer folha cujo conteúdo ultrapasse o limite da A4 — e que seria cortada 
 
 ## ✨ Features
 
-- 🎨 **Tema por missão** — a cor do capítulo se propaga por uma única variável CSS.
-- 🖨️ **Impressão A4 milimétrica** — dez folhas, nenhuma estourando o limite (verificado no navegador, com as fontes carregadas).
+- 🎨 **Tema por era** — onze missões, onze paletas, propagadas por uma única variável CSS.
+- 🖨️ **Impressão A4 milimétrica** — catorze folhas, nenhuma estourando o limite (verificado no navegador, com as fontes carregadas).
 - 🛰️ **Menu de pausa** com radar e destaque automático da missão em leitura.
 - 🚨 **Nível de procurado** com as estrelas do HUD no capítulo sobre o custo da indústria.
 - 🌴 **Cenário 100% CSS/SVG** — sol cortado, skyline e palmeiras sem uma única imagem externa.
@@ -121,7 +128,9 @@ Qualquer folha cujo conteúdo ultrapasse o limite da A4 — e que seria cortada 
 
 ## ⚠️ Nota sobre GTA VI
 
-O jogo ainda não foi lançado. Tudo o que o e-book afirma sobre desempenho e simulação vem de trailers e comunicados oficiais da Rockstar, e está marcado no texto como promessa, não como resultado medido. A data de lançamento já mudou duas vezes — **reconfira no [Rockstar Newswire](https://www.rockstargames.com/newswire) antes de citar**.
+O jogo ainda não foi lançado. A data (**19 de novembro de 2026**) e as plataformas (**PS5 e Xbox Series X|S**, sem PC no lançamento) foram conferidas na [página oficial da Rockstar](https://www.rockstargames.com/VI) em 15/09/2026.
+
+Já as afirmações sobre desempenho e simulação vêm de trailers e comunicados, e estão marcadas no texto como promessa — não como resultado medido. Essa separação é proposital: é o que diferencia o e-book de uma matéria de expectativa.
 
 ## 📄 Licença
 

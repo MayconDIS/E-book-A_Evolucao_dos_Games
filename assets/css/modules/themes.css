@@ -4,18 +4,94 @@
    numeração, etiquetas, ganchos) herda dessa variável.
    ============================================================ */
 
-/* Missão 01 — a cor de Franklin: o começo, o chão da indústria */
-.theme-franklin {
+/* Missão 01 — 1997/1999: a era top-down, no verde de fósforo do começo */
+.theme-topdown {
   --mission: var(--franklin);
   --mission-soft: rgba(143, 206, 0, 0.12);
   background-color: #0d1206;
 }
 
-/* Missão 02 — a cor de Michael: o cinema entra no jogo */
-.theme-michael {
+/* Missão 02 — 2001: Liberty City entra na terceira dimensão */
+.theme-liberty {
   --mission: var(--michael);
   --mission-soft: rgba(74, 137, 217, 0.12);
   background-color: #070d16;
+}
+
+/* Missão 03 — 2002/2004: Vice City e San Andreas, o neon e a escala */
+.theme-neon {
+  --mission: var(--vice-teal);
+  --mission-soft: rgba(0, 194, 199, 0.12);
+  background-color: #04141a;
+}
+
+.theme-neon .panel {
+  background: linear-gradient(160deg, #0a1f26 0%, #13202e 100%);
+}
+
+/* Missão 04 — 2004: San Andreas, no ocre do deserto e de Las Venturas */
+.theme-desert {
+  --mission: var(--desert);
+  --mission-soft: rgba(224, 163, 46, 0.12);
+  background-color: #17110a;
+}
+
+.theme-desert .panel {
+  background: linear-gradient(165deg, #1e1810 0%, #14110c 100%);
+}
+
+/* Missão 05 — a controvérsia: papel de jornal no meio do neon.
+   A quebra visual é proposital — é o capítulo em que o mundo de fora entra. */
+.theme-press {
+  --mission: var(--alert);
+  background-color: #1a1a17;
+}
+
+.press-sheet .panel {
+  background: #ece9e1;
+  border-color: #17171a;
+}
+
+.press-sheet .panel h2,
+.press-sheet .mission-id { color: #14140f; }
+.press-sheet .mission-id { -webkit-text-stroke: 2px var(--alert); color: transparent; }
+.press-sheet .panel p { color: #3e3d35; }
+.press-sheet .mission-head { border-bottom-color: rgba(0, 0, 0, 0.28); }
+.press-sheet .mission-objective { color: #5c5a4e; }
+.press-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.28); }
+.press-sheet .hud-source { color: #6a6759; }
+.press-sheet .briefing { background: #17171a; }
+.press-sheet .briefing p { color: #e6e6ea; }
+.press-sheet .objectives li { color: #3e3d35; }
+.press-sheet .cliffhanger { color: #14140f; }
+.press-sheet .tag { color: #fff; }
+
+/* Sobre papel claro, o texto forte precisa escurecer — herdar o branco
+   do tema escuro deixava os destaques da lista praticamente invisíveis. */
+.press-sheet .panel strong { color: #14140f; }
+.press-sheet .panel em { color: #4a493e; }
+.press-sheet .objectives li::before { color: var(--alert); }
+
+/* Dentro do bloco escuro, o contraste volta a ser o do tema padrão. */
+.press-sheet .briefing strong { color: #ffffff; }
+.press-sheet .briefing em { color: #d8d8de; }
+
+/* Missão 06 — 2008: a era HD, na paleta lavada de GTA IV */
+.theme-realism {
+  --mission: var(--steel);
+  --mission-soft: rgba(143, 163, 184, 0.12);
+  background-color: #0b0f13;
+}
+
+.theme-realism .panel {
+  background: linear-gradient(170deg, #151a20 0%, #10141a 100%);
+}
+
+/* Missão 05 — 2013: três protagonistas, na cor de Trevor */
+.theme-phenomenon {
+  --mission: var(--trevor);
+  --mission-soft: rgba(255, 128, 0, 0.12);
+  background-color: #150c02;
 }
 
 /* Missão 03 — Leonida: o destaque do e-book */
@@ -46,18 +122,11 @@
   border-color: var(--ink);
 }
 
-/* Missão 04 — a cor de Trevor: o caos criativo do indie */
-.theme-trevor {
-  --mission: var(--trevor);
-  --mission-soft: rgba(255, 128, 0, 0.12);
-  background-color: #150c02;
-}
-
-/* Missão bônus — o horizonte, no teal de Vice */
+/* Missão bônus — o que vem depois de Leonida */
 .theme-horizon {
-  --mission: var(--vice-teal);
-  --mission-soft: rgba(0, 194, 199, 0.12);
-  background-color: #04141a;
+  --mission: var(--violet);
+  --mission-soft: rgba(168, 85, 247, 0.12);
+  background-color: #100620;
 }
 
 /* Índice e dossiê */

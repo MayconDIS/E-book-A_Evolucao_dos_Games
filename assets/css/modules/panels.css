@@ -111,3 +111,18 @@
 }
 
 .hud-source { margin-bottom: 0; }
+
+/* --- Selo do capítulo em destaque --- */
+.gta-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  background: var(--sunset);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  padding: 7px 14px;
+}
