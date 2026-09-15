@@ -1,0 +1,113 @@
+/* ============================================================
+   4. PAINEL DE QUADRINHO, CABEÇALHO DE MISSÃO E HUD DE RODAPÉ
+   A moldura preta grossa é a citação direta da capa de GTA V.
+   ============================================================ */
+
+.panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--steel);
+  border: var(--panel-border) solid var(--ink);
+  padding: 0.75cm 0.9cm 0.6cm 0.9cm;
+  overflow: hidden;
+}
+
+/* Faixa de cor da missão no topo do painel */
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--mission);
+}
+
+/* --- Cabeçalho: cartela de missão --- */
+.mission-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.mission-head h2 { max-width: 13cm; }
+
+.mission-id {
+  font-family: var(--font-display);
+  font-size: 40pt;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--mission);
+  opacity: 0.8;
+}
+
+.mission-objective {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.mission-objective::before {
+  content: "OBJETIVO: ";
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--mission);
+}
+
+/* --- Rodapé: barra de HUD --- */
+.hud-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.hud-source {
+  font-size: 8.5pt;
+  line-height: 1.4;
+  color: #7c7c88;
+  max-width: 13.5cm;
+}
+
+.hud-source::before {
+  content: "FONTE";
+  display: block;
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--mission);
+  margin-bottom: 2px;
+}
+
+.hud-page {
+  font-family: var(--font-display);
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--mission);
+}
+
+/* --- Gancho de virada de página --- */
+.cliffhanger {
+  border-left: 3px solid var(--mission);
+  padding-left: 12px;
+  margin-bottom: 0.35cm;
+  font-size: 11.5pt;
+  font-style: italic;
+  color: var(--text);
+}
+
+.hud-source { margin-bottom: 0; }

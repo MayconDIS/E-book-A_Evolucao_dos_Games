@@ -1,0 +1,211 @@
+/* ============================================================
+   5. COMPONENTES DE MISSÃO
+   Briefing, dossiê, ganhos x riscos e nível de procurado.
+   ============================================================ */
+
+/* --- Caixa de briefing / inteligência --- */
+.briefing {
+  background: var(--asphalt);
+  border-left: 5px solid var(--mission);
+  padding: 12px 14px;
+  margin: 0.35cm 0;
+  position: relative;
+}
+
+.briefing p { margin-bottom: 0; font-size: 11pt; color: var(--text); }
+
+.briefing-label {
+  display: block;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--mission);
+  margin-bottom: 5px;
+}
+
+/* Variante escura para alertas */
+.briefing.is-alert {
+  border-left-color: var(--alert);
+  background: linear-gradient(90deg, rgba(224, 32, 32, 0.14), transparent 60%);
+}
+
+.briefing.is-alert .briefing-label { color: var(--alert); }
+
+/* --- Ganhos x Riscos: dois painéis de HUD lado a lado --- */
+.ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0.35cm 0;
+}
+
+.ledger-col {
+  background: var(--asphalt);
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+}
+
+.ledger-col h3 {
+  font-family: var(--font-ui);
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid currentColor;
+}
+
+.ledger-col.is-gain { border-top: 4px solid var(--money); }
+.ledger-col.is-gain h3 { color: var(--money); }
+.ledger-col.is-risk { border-top: 4px solid var(--alert); }
+.ledger-col.is-risk h3 { color: var(--alert); }
+
+.ledger-col ul { list-style: none; }
+
+.ledger-col li {
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--text-dim);
+  padding-left: 15px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.ledger-col li:last-child { margin-bottom: 0; }
+
+.ledger-col li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  background: currentColor;
+}
+
+.ledger-col.is-gain li::before { background: var(--money); }
+.ledger-col.is-risk li::before { background: var(--alert); }
+
+/* --- Lista de tópicos numerada, estilo objetivos de missão --- */
+.objectives {
+  list-style: none;
+  counter-reset: obj;
+  margin: 0.3cm 0;
+}
+
+.objectives li {
+  counter-increment: obj;
+  position: relative;
+  padding-left: 34px;
+  margin-bottom: 11px;
+  font-size: 11pt;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.objectives li::before {
+  content: counter(obj, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-size: 12pt;
+  color: var(--mission);
+}
+
+/* --- Nível de procurado (estrelas do HUD) --- */
+.wanted {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.3cm 0;
+}
+
+.wanted-star {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: var(--wanted);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.wanted-star.is-empty { background-color: #3a3a44; }
+
+.wanted-label {
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--wanted);
+  margin-left: 6px;
+}
+
+/* --- Dossiê de fontes (papel manila) --- */
+.dossier-sheet { background: #16140f; }
+.dossier-sheet .panel { background: var(--dossier); border-color: #0c0c0c; }
+.dossier-sheet .panel h2 { color: #14120c; }
+.dossier-sheet .panel p { color: #45402f; }
+.dossier-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.25); }
+
+.sources { list-style: none; }
+
+.sources li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 7px 0;
+}
+
+.sources a { text-decoration: none; display: block; }
+
+.source-name {
+  font-family: var(--font-display);
+  font-size: 12pt;
+  color: #14120c;
+  letter-spacing: 0.01em;
+}
+
+.sources a:hover .source-name { color: var(--vice-pink); }
+
+.source-note {
+  display: block;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #5a5340;
+}
+
+/* --- Índice: seleção de missões --- */
+.mission-select { list-style: none; counter-reset: pick; }
+
+.mission-select li {
+  counter-increment: pick;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 11px 0;
+}
+
+.mission-select li::before {
+  content: counter(pick, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 24pt;
+  color: var(--line);
+  line-height: 1;
+}
+
+.mission-select a {
+  font-family: var(--font-display);
+  font-size: 15pt;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.mission-select a:hover { color: var(--vice-pink); }
+
+.mission-select .pick-note {
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-align: right;
+}

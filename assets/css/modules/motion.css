@@ -1,0 +1,33 @@
+/* ============================================================
+   8. MOVIMENTO
+   ============================================================ */
+
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* Varredura do radar no menu de pausa */
+.radar-sweep {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, rgba(0, 194, 199, 0.45), transparent 25%);
+  animation: radar-sweep 4s linear infinite;
+}
+
+.cell-skyline::after { animation: glow-pulse 5s ease-in-out infinite; }
+
+/* Respeita a preferência de menos movimento do sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,91 @@
+/* ============================================================
+   2. RESET, BASE & TIPOGRAFIA
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--asphalt);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Tipografia de pôster: condensada, caixa alta, sem serifa --- */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  /* Nunca abaixo de 1: line-height apertado corta til e cedilha */
+  line-height: 1.06;
+}
+
+h1 { font-size: 54pt; color: #fff; }
+h2 { font-size: 30pt; color: #fff; }
+h3 { font-size: 13pt; letter-spacing: 0.08em; }
+
+p {
+  font-size: 12pt;
+  line-height: 1.55;
+  margin-bottom: 0.4cm;
+  color: var(--text-dim);
+}
+
+strong { color: #fff; font-weight: 800; }
+em { color: var(--text); font-style: italic; }
+
+/* Primeira frase do capítulo puxa o olho, sem capitular de fliperama */
+.lede {
+  font-size: 13.5pt;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* --- Marcador de dado no texto (estilo etiqueta de HUD) --- */
+.tag {
+  background-color: var(--mission);
+  color: var(--ink);
+  padding: 1px 7px;
+  font-weight: 800;
+  font-size: 11.5pt;
+  white-space: nowrap;
+}
+
+/* --- Valores monetários no verde do HUD --- */
+.money { color: var(--money); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* --- Rótulo pequeno em caixa alta (eyebrow) --- */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mission);
+}
+
+/* --- Acessibilidade --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--wanted);
+  outline-offset: 3px;
+}

@@ -1,0 +1,258 @@
+/* ============================================================
+   6. CAPA EM PAINÉIS & TELA DE MISSÃO CUMPRIDA
+   A capa cita a colagem de quadrinhos de GTA V, repintada
+   com o pôr do sol de Leonida (GTA VI).
+   ============================================================ */
+
+.cover-sheet { background: var(--ink); padding: 0.6cm; }
+
+.cover-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1.1fr 1.5fr 1fr 1fr;
+  gap: 7px;
+  background: var(--ink);
+}
+
+.cell {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  outline: 1px solid rgba(255, 255, 255, 0.12);
+  outline-offset: -4px;
+}
+
+/* --- Painel do título (faixa central) --- */
+.cell-title {
+  grid-column: 1 / -1;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.5cm;
+  gap: 10px;
+}
+
+.cover-kicker {
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  color: var(--vice-teal);
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 46pt;
+  line-height: 1.04;
+  text-transform: uppercase;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--vice-pink);
+}
+
+.cover-sub {
+  font-size: 10pt;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* --- Painel: pôr do sol de Leonida --- */
+.cell-sunset { background: var(--dusk); }
+
+.cell-sunset::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  width: 110px;
+  height: 110px;
+  margin-left: -55px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff3b0, #ff6b35);
+  opacity: 0.95;
+}
+
+.cell-sunset::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0 9px, rgba(0, 0, 0, 0.35) 9px 12px);
+}
+
+/* --- Painel: palmeiras --- */
+.cell-palms {
+  background-color: #ff9a5c;
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20120%27%3E%3Cpath%20d=%27M47%20118%20Q43%2086%2041%2056%20L50%2055%20Q52%2086%2054%20118%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q24%2030%202%2036%20Q24%2041%2045%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q31%2016%2015%203%20Q35%2023%2047%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2052%20Q53%2013%2073%202%20Q58%2025%2050%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M47%2052%20Q72%2025%2097%2030%20Q72%2037%2048%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2054%20Q69%2049%2092%2064%20Q67%2055%2047%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M44%2054%20Q22%2051%203%2067%20Q26%2056%2045%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2740%27%20cy=%2758%27%20r=%274%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2751%27%20cy=%2760%27%20r=%273.5%27%20fill=%27%25230a0a0c%27/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20120%27%3E%3Cpath%20d=%27M47%20118%20Q43%2086%2041%2056%20L50%2055%20Q52%2086%2054%20118%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q24%2030%202%2036%20Q24%2041%2045%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q31%2016%2015%203%20Q35%2023%2047%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2052%20Q53%2013%2073%202%20Q58%2025%2050%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M47%2052%20Q72%2025%2097%2030%20Q72%2037%2048%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2054%20Q69%2049%2092%2064%20Q67%2055%2047%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M44%2054%20Q22%2051%203%2067%20Q26%2056%2045%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2740%27%20cy=%2758%27%20r=%274%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2751%27%20cy=%2760%27%20r=%273.5%27%20fill=%27%25230a0a0c%27/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #ff9a5c 0%, #ff2d95 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: 18% 102%, 74% 102%, center;
+  background-size: 58% auto, 40% auto, cover;
+}
+
+/* --- Painel: skyline --- */
+.cell-skyline {
+  background-color: #0f1b33;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20420%20200%27%20preserveAspectRatio=%27none%27%3E%3Crect%20x=%270%27%20y=%2729%27%20width=%2737%27%20height=%27171%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2716%27%20y=%277%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2750%27%20y=%2774%27%20width=%2732%27%20height=%27126%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2790%27%20y=%2765%27%20width=%2772%27%20height=%27135%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27124%27%20y=%2743%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27174%27%20y=%27137%27%20width=%2757%27%20height=%2763%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27247%27%20y=%2785%27%20width=%2733%27%20height=%27115%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27290%27%20y=%27138%27%20width=%2772%27%20height=%2762%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27365%27%20y=%2775%27%20width=%2774%27%20height=%27125%27%20fill=%27%2305050a%27/%3E%3C/svg%3E"), linear-gradient(180deg, #0f1b33 0%, #2b0b3f 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom center, center;
+  background-size: 100% 62%, cover;
+}
+
+.cell-skyline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60%;
+  height: 2px;
+  background: var(--vice-teal);
+  box-shadow: 0 0 14px var(--vice-teal);
+}
+
+/* --- Painel: grade synthwave --- */
+.cell-grid {
+  background-color: #120425;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20420%20300%27%20preserveAspectRatio=%27none%27%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-420.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-341.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-262.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-183.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-105.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-26.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%2752.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27131.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27210.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27288.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27367.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27446.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27525.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27603.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27682.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27761.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27840.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%271.0%27%20x2=%27420%27%20y2=%271.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%276.0%27%20x2=%27420%27%20y2=%276.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2717.2%27%20x2=%27420%27%20y2=%2717.2%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2736.4%27%20x2=%27420%27%20y2=%2736.4%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2765.1%27%20x2=%27420%27%20y2=%2765.1%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27104.5%27%20x2=%27420%27%20y2=%27104.5%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27156.1%27%20x2=%27420%27%20y2=%27156.1%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27220.9%27%20x2=%27420%27%20y2=%27220.9%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27300.0%27%20x2=%27420%27%20y2=%27300.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3C/svg%3E"), linear-gradient(180deg, #1b0636 0%, #120425 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom center, center;
+  background-size: 100% 78%, cover;
+}
+
+/* --- Painel: estrelas de procurado --- */
+.cell-wanted {
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* --- Painel: dinheiro --- */
+.cell-money {
+  background: var(--money);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell-money span {
+  font-family: var(--font-display);
+  font-size: 40pt;
+  color: var(--ink);
+}
+
+/* --- Painel: assinatura do autor --- */
+.cell-author {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 16px;
+  gap: 1px;
+}
+
+.cell-author .label {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #8a8a94;
+}
+
+.cell-author .name {
+  font-family: var(--font-display);
+  font-size: 15pt;
+  color: var(--ink);
+  line-height: 1.12;
+}
+
+.cell-author .ra {
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #6c6c76;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   TELA FINAL — MISSÃO CUMPRIDA
+   ============================================================ */
+
+.passed-sheet { background: #0b0a06; }
+.passed-sheet .panel { background: var(--ink); border-color: var(--vice-gold); }
+.passed-sheet .panel::before { background: var(--vice-gold); }
+
+.passed-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.passed-title {
+  font-family: var(--font-display);
+  font-size: 44pt;
+  line-height: 1.04;
+  color: var(--vice-gold);
+}
+
+.passed-sub {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.score-card {
+  width: 100%;
+  max-width: 13cm;
+  border-top: 2px solid rgba(255, 194, 71, 0.4);
+  border-bottom: 2px solid rgba(255, 194, 71, 0.4);
+  padding: 14px 0;
+  margin-top: 8px;
+}
+
+.score-card dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px 16px;
+  text-align: left;
+}
+
+.score-card dt {
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.score-card dd {
+  font-family: var(--font-display);
+  font-size: 13pt;
+  color: var(--vice-gold);
+  text-align: right;
+}
+
+.passed-note {
+  font-size: 11pt;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 13cm;
+  margin: 0;
+}
+
+/* Utilitários de span da grade da capa */
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: 1 / -1; }

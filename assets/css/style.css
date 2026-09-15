@@ -1,0 +1,17 @@
+/* ============================================================
+   A EVOLUÇÃO DOS GAMES — E-BOOK
+   Direção de arte: GTA V (painéis + HUD) x GTA VI (Vice sunset)
+   Arquitetura CSS modular
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap');
+
+@import url('modules/tokens.css');
+@import url('modules/base.css');
+@import url('modules/layout.css');
+@import url('modules/panels.css');
+@import url('modules/missions.css');
+@import url('modules/covers.css');
+@import url('modules/themes.css');
+@import url('modules/motion.css');
+@import url('modules/print.css');

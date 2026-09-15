@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-book sobre a evolução dos games, do Atari a Leonida. Direção de arte inspirada em GTA V e GTA VI: painéis, HUD de missão e o pôr do sol de Vice City. Por Gabriel Alves Moreira e Maycon Douglas Inácio Silva.">
+    <meta name="author" content="Gabriel Alves Moreira, Maycon Douglas Inácio Silva">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maycondis.github.io/E-book-A_Evolucao_dos_Games/">
+    <meta property="og:title" content="A Evolução dos Games | E-book">
+    <meta property="og:description" content="Seis missões, do Atari a Leonida: como a restrição técnica sempre definiu o que é um bom jogo.">
+    <meta property="og:image" content="https://maycondis.github.io/E-book-A_Evolucao_dos_Games/assets/img/capa.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://maycondis.github.io/E-book-A_Evolucao_dos_Games/">
+    <meta property="twitter:title" content="A Evolução dos Games | E-book">
+    <meta property="twitter:description" content="Seis missões, do Atari a Leonida: como a restrição técnica sempre definiu o que é um bom jogo.">
+    <meta property="twitter:image" content="https://maycondis.github.io/E-book-A_Evolucao_dos_Games/assets/img/capa.png">
+
+    <title>A Evolução dos Games | E-book</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/scenery.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+</head>
+<body>
+
+    <!-- ============================================================
+         CENÁRIO — LEONIDA AO ANOITECER (100% CSS)
+         ============================================================ -->
+    <div class="scenery" aria-hidden="true">
+        <div class="scenery-sun"></div>
+        <div class="scenery-skyline"></div>
+        <div class="scenery-horizon"></div>
+        <div class="scenery-road"></div>
+    </div>
+
+    <!-- ============================================================
+         MENU DE PAUSA
+         ============================================================ -->
+    <nav id="pause-menu" aria-label="Seleção de missões">
+        <p class="menu-tab">Menu de Pausa</p>
+        <div class="menu-body">
+            <div class="radar" aria-hidden="true">
+                <div class="radar-sweep"></div>
+                <div class="radar-blip"></div>
+            </div>
+            <ol>
+                <li><a href="#m1">Restrição</a></li>
+                <li><a href="#m2">A Terceira Dimensão</a></li>
+                <li><a href="#m3">Leonida</a></li>
+                <li><a href="#m4">O Custo Bilionário</a></li>
+                <li><a href="#m5">Fora do Radar</a></li>
+                <li><a href="#m6">Horizonte</a></li>
+                <li><a href="#m7">Dossiê</a></li>
+            </ol>
+            <p class="menu-hud"><span>Progresso</span><span>7 / 7</span></p>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         E-BOOK
+         ============================================================ -->
+    <main>
+
+        <!-- ===== CAPA ===== -->
+        <article class="sheet cover-sheet" aria-labelledby="cover-title">
+            <div class="cover-grid">
+
+                <div class="cell cell-sunset span-2"></div>
+
+                <div class="cell cell-wanted" aria-hidden="true">
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                </div>
+
+                <div class="cell cell-title span-3">
+                    <p class="cover-kicker">1972 &ndash; 2026</p>
+                    <h1 id="cover-title" class="cover-title">A Evolução<br>dos Games</h1>
+                    <p class="cover-sub">Do pixel ao mundo vivo &middot; Seis missões</p>
+                </div>
+
+                <div class="cell cell-grid"></div>
+
+                <div class="cell cell-palms" aria-hidden="true"></div>
+
+                <div class="cell cell-money" aria-hidden="true"><span>$</span></div>
+
+                <div class="cell cell-author span-2">
+                    <span class="label">Escrito por</span>
+                    <span class="name">Gabriel Alves Moreira</span>
+                    <span class="ra">R.A. H67HJ4</span>
+                    <span class="name">Maycon Douglas Inácio Silva</span>
+                    <span class="ra">R.A. H719CD3</span>
+                </div>
+
+                <div class="cell cell-skyline"></div>
+
+            </div>
+        </article>
+
+        <!-- ===== SELEÇÃO DE MISSÕES ===== -->
+        <article class="sheet theme-neutral" aria-labelledby="index-title">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Índice</p>
+                        <h2 id="index-title">Seleção de Missões</h2>
+                        <span class="mission-objective">percorrer 50 anos de evolução técnica sem perder o fio do design</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">00</span>
+                </header>
+
+                <ul class="mission-select">
+                    <li><a href="#m1">Restrição</a><span class="pick-note">1972&ndash;1994</span></li>
+                    <li><a href="#m2">A Terceira Dimensão</a><span class="pick-note">1994&ndash;2004</span></li>
+                    <li><a href="#m3">Leonida</a><span class="pick-note">GTA VI</span></li>
+                    <li><a href="#m4">O Custo Bilionário</a><span class="pick-note">Procurado</span></li>
+                    <li><a href="#m5">Fora do Radar</a><span class="pick-note">Indie</span></li>
+                    <li><a href="#m6">Horizonte</a><span class="pick-note">Bônus</span></li>
+                    <li><a href="#m7">Dossiê</a><span class="pick-note">Fontes</span></li>
+                </ul>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Cada missão fecha com a fonte usada. O que é dado verificado e o que é promessa de fabricante está marcado no texto.</p>
+                    <span class="hud-page">00</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO 01 ===== -->
+        <article class="sheet theme-franklin" aria-labelledby="m1">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 01 &middot; 1972&ndash;1994</p>
+                        <h2 id="m1">Restrição</h2>
+                        <span class="mission-objective">entender por que a falta de memória virou a melhor escola de design da indústria</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">01</span>
+                </header>
+
+                <p class="lede">Tudo começou com escassez. O <strong>Atari 2600</strong> trabalhava com <span class="tag">128 bytes de RAM</span> — menos do que um parágrafo deste e-book ocupa hoje. Não sobrava espaço para narrativa, cutscene ou tutorial: cada byte precisava virar jogabilidade. Foi dessa limitação que nasceu o vocabulário de design que a indústria usa até agora.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Briefing</span>
+                    <p><em>Super Mario Bros.</em> (1985) inteiro cabia em 40 KB. As nuvens do céu e os arbustos do chão são o mesmo desenho, apenas repintado — uma economia de memória que acabou virando identidade visual.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que se ganha</h3>
+                        <ul>
+                            <li><strong>Otimização extrema:</strong> jogos inteiros em poucos kilobytes, rodando sem engasgo.</li>
+                            <li><strong>Pureza mecânica:</strong> jogabilidade imediata, sem carregamento nem tutorial.</li>
+                            <li><strong>Leitura instantânea:</strong> o jogador entende a regra só de olhar a tela.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que se perde</h3>
+                        <ul>
+                            <li><strong>Dificuldade como caixa registradora:</strong> o desbalanceamento dos arcades existia para consumir fichas.</li>
+                            <li><strong>Nada persiste:</strong> sem save, o progresso morria com a última vida.</li>
+                            <li><strong>História terceirizada:</strong> o enredo ficava no manual impresso, fora do jogo.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Se era a limitação técnica que fazia o papel de game designer, o que aconteceria quando ela sumisse? A resposta veio com uma terceira dimensão.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Video Game History Foundation; documentação técnica do Atari 2600 e do NES.</p>
+                    <span class="hud-page">01</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO 02 ===== -->
+        <article class="sheet theme-michael" aria-labelledby="m2">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 02 &middot; 1994&ndash;2004</p>
+                        <h2 id="m2">A Terceira Dimensão</h2>
+                        <span class="mission-objective">acompanhar o momento em que o jogo deixou de ser uma fase e virou um lugar</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">02</span>
+                </header>
+
+                <p class="lede">Entre 1996 e 2001 a indústria reaprendeu o próprio ofício. <strong>Super Mario 64</strong> inventou a gramática da câmera em terceira pessoa e do controle analógico; <strong>GTA III</strong> provou que um mapa contínuo, <span class="tag">sem tela de carregamento entre bairros</span>, cabia em hardware doméstico. O videogame parou de ser uma sequência de desafios e passou a ser um endereço.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Inteligência</span>
+                    <p>O PlayStation 1 não conseguia desenhar longe, então os estúdios cobriam o horizonte com névoa. <em>Silent Hill</em> transformou essa limitação de hardware na identidade de terror mais copiada da história — de novo, a restrição virando estilo.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que se ganha</h3>
+                        <ul>
+                            <li><strong>Liberdade espacial:</strong> o jogador escolhe a rota, não só a velocidade.</li>
+                            <li><strong>Linguagem de cinema:</strong> enquadramento, trilha e dublagem entram no repertório.</li>
+                            <li><strong>Simulação emergente:</strong> trânsito, polícia e pedestres criam histórias não roteirizadas.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que se perde</h3>
+                        <ul>
+                            <li><strong>Câmera hostil:</strong> uma década inteira de jogos travando a diversão na própria lente.</li>
+                            <li><strong>Custo multiplicado:</strong> modelagem e animação inflam equipes de 5 para 50 pessoas.</li>
+                            <li><strong>Mapas ocos:</strong> a escala cresce mais rápido que o conteúdo para preenchê-la.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Vinte e cinco anos depois, é exatamente esse mapa oco que a geração atual tenta resolver — e nenhum projeto carrega tanta expectativa quanto o próximo.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">GDC Vault — postmortems de <em>Super Mario 64</em>, <em>GTA III</em> e <em>Silent Hill</em>.</p>
+                    <span class="hud-page">02</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO 03 — DESTAQUE ===== -->
+        <article class="sheet theme-leonida" aria-labelledby="m3">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 03 &middot; Grand Theft Auto VI</p>
+                        <h2 id="m3">Leonida</h2>
+                        <span class="mission-objective">separar o que a Rockstar confirmou do que ainda é leitura de trailer</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">03</span>
+                </header>
+
+                <p class="lede">Nenhum jogo da década concentrou tanta expectativa. Anunciado em dezembro de 2023 e adiado duas vezes, <strong>Grand Theft Auto VI</strong> se passa no estado fictício de Leonida, com <span class="tag">Vice City</span> no centro. Vale a ressalva que quase nenhuma matéria faz: tudo o que se sabe sobre desempenho e simulação vem dos trailers e da própria Rockstar. É promessa anunciada, ainda não é resultado medido.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Confirmado pela Rockstar</span>
+                    <p>Dois protagonistas jogáveis — <strong>Jason</strong> e <strong>Lucia</strong>, a primeira protagonista feminina da série principal — e uma narrativa construída sobre a dupla. Data de lançamento e escopo técnico já mudaram no meio do caminho; o resto ainda é interpretação de vídeo.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O salto prometido</h3>
+                        <ul>
+                            <li><strong>Multidões reativas:</strong> NPCs com rotina própria, reagindo ao clima e ao jogador.</li>
+                            <li><strong>Iluminação global:</strong> ray tracing em vegetação densa, água e reflexo urbano.</li>
+                            <li><strong>Mundo dirigido por sistemas:</strong> o ambiente responde de forma imprevisível.</li>
+                            <li><strong>Narrativa em dupla:</strong> dois protagonistas ampliam o jogo social e criminal.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que isso custa</h3>
+                        <ul>
+                            <li><strong>Barreira de hardware:</strong> exige console da geração atual; o PC ficou fora do lançamento.</li>
+                            <li><strong>Ciclo de uma década:</strong> orçamento bilionário e dois adiamentos públicos.</li>
+                            <li><strong>Pressão do online:</strong> o modelo de serviço contínuo cobra seu espaço no modo história.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Se o ápice técnico custa uma década e bilhões de dólares, alguém paga essa conta. É hora de olhar o nível de procurado da indústria.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Rockstar Newswire — trailers oficiais e comunicados de adiamento. Confirme a data vigente antes de publicar este e-book.</p>
+                    <span class="hud-page">03</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== NÍVEL DE PROCURADO ===== -->
+        <article class="sheet theme-wanted" aria-labelledby="m4">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Nível de Procurado</p>
+                        <h2 id="m4">O Custo Bilionário</h2>
+                        <span class="mission-objective">encarar a conta que o fotorrealismo deixou para a indústria</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">04</span>
+                </header>
+
+                <p class="lede">Por trás do fotorrealismo existe uma planilha assustadora. Um AAA de ponta hoje custa <span class="money">centenas de milhões de dólares</span> e ocupa centenas de pessoas por quase uma década. Quando um projeto desse porte fracassa, ele não leva só o jogo: leva o estúdio inteiro junto.</p>
+
+                <div class="wanted" role="img" aria-label="Nível de procurado: quatro de cinco estrelas">
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star is-empty"></span>
+                    <span class="wanted-label">Risco estrutural</span>
+                </div>
+
+                <ol class="objectives">
+                    <li><strong>Aposta binária.</strong> Com ciclos de 7 a 10 anos, o estúdio aposta o próprio futuro em uma leitura de mercado feita uma década antes do lançamento.</li>
+                    <li><strong>Crunch estrutural.</strong> Jornadas extremas na reta final seguem aparecendo, ano após ano, nas pesquisas feitas com os próprios desenvolvedores.</li>
+                    <li><strong>Demissões em massa.</strong> Entre 2023 e 2024, milhares de profissionais foram desligados no setor — inclusive em anos de receita recorde.</li>
+                    <li><strong>Monetização como financiamento.</strong> Passe de temporada e loja interna deixam de ser extra e passam a bancar o desenvolvimento.</li>
+                </ol>
+
+                <aside class="briefing is-alert">
+                    <span class="briefing-label">Alerta</span>
+                    <p>Gráfico melhor não é jogo melhor. Os orçamentos cresceram em ordem de grandeza nos últimos quinze anos enquanto o preço de capa subiu pouco — e é exatamente essa diferença que a loja interna foi chamada para cobrir.</p>
+                </aside>
+
+                <p class="cliffhanger">Se o gigantismo virou armadilha, a saída pode estar no extremo oposto: equipes minúsculas, com liberdade total.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">GDC &ldquo;State of the Game Industry&rdquo;; balanços públicos de publishers (2023&ndash;2025).</p>
+                    <span class="hud-page">04</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO 05 ===== -->
+        <article class="sheet theme-trevor" aria-labelledby="m5">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 05 &middot; Independentes</p>
+                        <h2 id="m5">Fora do Radar</h2>
+                        <span class="mission-objective">ver quem assume o risco criativo que o AAA não pode mais correr</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">05</span>
+                </header>
+
+                <p class="lede">Enquanto os gigantes apostam bilhões, <strong>Stardew Valley</strong> foi feito por uma pessoa só ao longo de quatro anos e vendeu dezenas de milhões de cópias. <strong>Balatro</strong>, também obra de um desenvolvedor solo, virou um dos jogos mais premiados de 2024. A cena independente devolveu ao mercado justamente aquilo que o orçamento bilionário tornou proibido: <span class="tag">errar barato</span>.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Inteligência</span>
+                    <p>A ferramenta deixou de ser barreira. Godot e Unity colocaram motores profissionais ao alcance de qualquer pessoa, de graça ou quase. O gargalo hoje não é técnico — é atenção.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que se ganha</h3>
+                        <ul>
+                            <li><strong>Inovação sem filtro:</strong> gêneros experimentais e temas que nenhum comitê aprovaria.</li>
+                            <li><strong>Custo-benefício:</strong> experiências memoráveis por uma fração do preço de um AAA.</li>
+                            <li><strong>Ciclo curto:</strong> de 1 a 3 anos — dá para errar, aprender e tentar de novo.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que se perde</h3>
+                        <ul>
+                            <li><strong>Hipersaturação:</strong> a Steam recebeu mais de 18 mil lançamentos em 2024, cerca de 50 por dia.</li>
+                            <li><strong>Sem verba de marketing:</strong> equipes pequenas ficam reféns do algoritmo da loja.</li>
+                            <li><strong>Instabilidade:</strong> um único fracasso costuma encerrar o estúdio.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Dos 128 bytes do Atari aos bilhões de Leonida, uma pergunta continua aberta: o que vem depois do mundo aberto?</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">SteamDB (estatísticas de lançamentos); números de vendas divulgados pelos próprios estúdios.</p>
+                    <span class="hud-page">05</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO BÔNUS ===== -->
+        <article class="sheet theme-horizon" aria-labelledby="m6">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão Bônus</p>
+                        <h2 id="m6">Horizonte</h2>
+                        <span class="mission-objective">mapear as três frentes que disputam o próximo salto</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">06</span>
+                </header>
+
+                <p class="lede">O próximo salto provavelmente não será gráfico. Com o fotorrealismo praticamente resolvido, a fronteira passou a ser <span class="tag">onde o jogo roda</span> e quão vivo ele é. Três forças disputam esse horizonte, e cada uma chega com o próprio gargalo.</p>
+
+                <ol class="objectives">
+                    <li><strong>Streaming universal.</strong> O processamento migra para o servidor e o blockbuster passa a rodar em celular e Smart TV. O gargalo deixa de ser a placa de vídeo e vira a latência da rede: poucos milissegundos separam a imersão da frustração.</li>
+                    <li><strong>Imersão corporal.</strong> VR e realidade mista trocam o controle pelo corpo. O obstáculo não é mais resolução, é ergonomia — peso, enjoo de movimento e sessões que poucos aguentam por mais de uma hora.</li>
+                    <li><strong>IA generativa em tempo real.</strong> NPCs que improvisam diálogo e missões que se reescrevem. A promessa é infinitude; o risco é conteúdo infinito e irrelevante, sem a curadoria que dá sentido a um mundo.</li>
+                </ol>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Conclusão do dossiê</span>
+                    <p>Toda geração repetiu o mesmo erro: confundir capacidade técnica com experiência. A terceira dimensão não salvou jogo ruim, e a IA também não vai salvar. A tecnologia é o motor; o design continua sendo o volante.</p>
+                </aside>
+
+                <p class="cliffhanger">O padrão de cinquenta anos é claro: toda limitação superada cria uma restrição nova. É a restrição, e não a potência, que sempre definiu o que é um bom jogo.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Documentação técnica de Xbox Cloud Gaming e NVIDIA RTX; Steam Hardware Survey.</p>
+                    <span class="hud-page">06</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== DOSSIÊ ===== -->
+        <article class="sheet theme-dossier dossier-sheet" aria-labelledby="m7">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Arquivo</p>
+                        <h2 id="m7">Dossiê</h2>
+                        <span class="mission-objective">conferir na fonte tudo o que foi afirmado aqui</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">07</span>
+                </header>
+
+                <ul class="sources">
+                    <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">
+                        <span class="source-name">Rockstar Games &mdash; GTA VI</span>
+                        <span class="source-note">Site oficial: trailers, data de lançamento e comunicados sobre Leonida.</span></a></li>
+                    <li><a href="https://www.rockstargames.com/newswire" target="_blank" rel="noopener">
+                        <span class="source-name">Rockstar Newswire</span>
+                        <span class="source-note">Origem primária dos anúncios de adiamento citados na Missão 03.</span></a></li>
+                    <li><a href="https://gamehistory.org/" target="_blank" rel="noopener">
+                        <span class="source-name">Video Game History Foundation</span>
+                        <span class="source-note">Preservação e documentação técnica das eras Atari e NES.</span></a></li>
+                    <li><a href="https://gdcvault.com/" target="_blank" rel="noopener">
+                        <span class="source-name">GDC Vault</span>
+                        <span class="source-note">Postmortems dos próprios criadores sobre a transição para o 3D.</span></a></li>
+                    <li><a href="https://gdconf.com/state-of-game-industry" target="_blank" rel="noopener">
+                        <span class="source-name">GDC &mdash; State of the Game Industry</span>
+                        <span class="source-note">Pesquisa anual com dados de crunch, demissões e orçamento.</span></a></li>
+                    <li><a href="https://steamdb.info/stats/releases/" target="_blank" rel="noopener">
+                        <span class="source-name">SteamDB &mdash; Lançamentos</span>
+                        <span class="source-note">Os números da hipersaturação indie citados na Missão 05.</span></a></li>
+                    <li><a href="https://developer.nvidia.com/rtx/ray-tracing" target="_blank" rel="noopener">
+                        <span class="source-name">NVIDIA &mdash; Ray Tracing</span>
+                        <span class="source-note">Como funciona a iluminação global que define o visual desta geração.</span></a></li>
+                    <li><a href="https://store.steampowered.com/hwsurvey" target="_blank" rel="noopener">
+                        <span class="source-name">Steam Hardware Survey</span>
+                        <span class="source-note">Retrato real do hardware do público — a tal barreira de entrada.</span></a></li>
+                    <li><a href="https://www.eurogamer.net/digitalfoundry" target="_blank" rel="noopener">
+                        <span class="source-name">Digital Foundry</span>
+                        <span class="source-note">Análise técnica independente de desempenho, resolução e ray tracing.</span></a></li>
+                </ul>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Links verificados na data de publicação. Dados de mercado mudam rápido: reconfira antes de citar.</p>
+                    <span class="hud-page">07</span>
+                </footer>
+            </div>
+        </article>
+
+        <!-- ===== MISSÃO CUMPRIDA ===== -->
+        <article class="sheet theme-gold passed-sheet" aria-labelledby="passed-title">
+            <div class="panel">
+                <div class="passed-box">
+                    <p class="passed-sub">Missão</p>
+                    <h2 id="passed-title" class="passed-title">Cumprida</h2>
+
+                    <div class="score-card">
+                        <dl>
+                            <dt>Distância percorrida</dt><dd>50 anos</dd>
+                            <dt>Do Atari 2600</dt><dd>128 bytes</dd>
+                            <dt>A Leonida</dt><dd>1 década de obra</dd>
+                            <dt>Missões concluídas</dt><dd>7 / 7</dd>
+                        </dl>
+                    </div>
+
+                    <p class="passed-note">O que muda de geração em geração é a potência disponível. O que decide se o jogo presta continua sendo a decisão de design — e essa nunca dependeu de teraflops.</p>
+                </div>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">A Evolução dos Games &middot; Gabriel Alves Moreira (R.A. H67HJ4) e Maycon Douglas Inácio Silva (R.A. H719CD3) &middot; 2026</p>
+                    <span class="hud-page">Fim</span>
+                </footer>
+            </div>
+        </article>
+
+        <button id="btn-pdf" aria-label="Baixar o e-book em PDF">Baixar PDF</button>
+
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

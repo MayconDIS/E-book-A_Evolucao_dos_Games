@@ -1,0 +1,182 @@
+/* ============================================================
+   3. LAYOUT — GRADE DE FOLHAS & MENU DE PAUSA
+   ============================================================ */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+  padding: 44px 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Cada .sheet é exatamente uma folha A4 */
+.sheet {
+  width: var(--page-w);
+  height: var(--page-h);
+  padding: var(--page-pad);
+  background-color: var(--asphalt-2);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+/* Grão de filme: UMA camada fixa do tamanho da janela, sobre tudo.
+   Aplicar o grão em cada folha criava 10 camadas do tamanho de uma A4
+   e travava o renderizador ao rolar a página. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 180px 180px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* ============================================================
+   MENU DE PAUSA (navegação lateral, no espírito do menu do GTA V)
+   ============================================================ */
+
+#pause-menu {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  z-index: 20;
+  /* Sem backdrop-filter: numa página longa ele obriga o navegador a
+     recompor tudo que está atrás a cada rolagem. */
+  background: #08080a;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.menu-tab {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 12pt;
+  letter-spacing: 0.06em;
+  padding: 9px 14px;
+}
+
+.menu-body { padding: 14px; }
+
+/* Radar circular do HUD */
+.radar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 16px auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 194, 199, 0.18), transparent 70%),
+    #0e0e12;
+}
+
+.radar::before,
+.radar::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.radar::before { left: 0; right: 0; top: 50%; height: 1px; }
+.radar::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+
+.radar-blip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background: var(--vice-pink);
+  border: 1px solid #fff;
+  transform: rotate(45deg);
+}
+
+#pause-menu ol {
+  list-style: none;
+  counter-reset: mission;
+}
+
+#pause-menu li { counter-increment: mission; }
+
+#pause-menu a {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: baseline;
+  gap: 6px;
+  padding: 7px 8px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+#pause-menu a::before {
+  content: counter(mission, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 11.5pt;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#pause-menu a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+#pause-menu a.active {
+  background: #fff;
+  color: var(--ink);
+  border-left-color: var(--vice-pink);
+}
+
+#pause-menu a.active::before { color: var(--vice-pink); }
+
+.menu-hud {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 12px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media screen and (max-width: 1480px) {
+  #pause-menu { display: none; }
+}
+
+@media screen and (max-width: 900px) {
+  .sheet {
+    width: 100%;
+    max-width: var(--page-w);
+    height: auto;
+    padding: 14px;
+  }
+  main { padding: 20px 14px; gap: 20px; }
+  h1 { font-size: 34pt; }
+  h2 { font-size: 22pt; }
+  p { font-size: 11.5pt; }
+}

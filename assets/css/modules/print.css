@@ -1,0 +1,126 @@
+/* ============================================================
+   9. IMPRESSÃO / PDF
+   ============================================================ */
+
+#btn-pdf {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: var(--sunset);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 12pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 13px 20px;
+  border: 3px solid var(--ink);
+  box-shadow: 0 10px 26px rgba(255, 45, 149, 0.35);
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+
+#btn-pdf:hover { transform: translateY(-2px); }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  #pause-menu,
+  #btn-pdf,
+  .scenery {
+    display: none !important;
+  }
+
+  body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: var(--asphalt) !important;
+  }
+
+  main {
+    display: block;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Uma .sheet = exatamente uma folha A4 */
+  .sheet {
+    width: 21cm;
+    height: 29.7cm;
+    min-height: 29.7cm;
+    margin: 0;
+    padding: 1cm;
+    box-shadow: none !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .sheet:last-of-type { page-break-after: auto; }
+
+  /* O grão de filme some no papel: vira sujeira na impressão */
+  body::after { display: none !important; }
+
+  /* Ajuste fino para o conteúdo não estourar a folha */
+  p { font-size: 11.5pt !important; line-height: 1.5 !important; margin-bottom: 0.35cm !important; }
+  .lede { font-size: 12.5pt !important; }
+  h2 { font-size: 26pt !important; }
+  .mission-id { font-size: 34pt !important; }
+  .briefing p { font-size: 10.5pt !important; }
+  .ledger-col li { font-size: 10pt !important; margin-bottom: 7px !important; }
+  .objectives li { font-size: 10.5pt !important; margin-bottom: 9px !important; }
+  .cliffhanger { font-size: 11pt !important; }
+  .source-name { font-size: 11pt !important; }
+  .source-note { font-size: 9pt !important; }
+  .sources li { padding: 5px 0 !important; }
+  .mission-select a { font-size: 14pt !important; }
+  .panel { padding: 0.7cm 0.85cm 0.55cm 0.85cm !important; }
+
+  .hud-footer { margin-top: auto !important; }
+
+  /* Preserva toda a direção de arte no PDF */
+  .sheet, .panel, .briefing, .ledger-col, .cell, .cover-grid,
+  .cover-title, .wanted-star, .passed-title, .score-card,
+  .mission-id, .hud-page, .tag, .dossier-sheet .panel {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .sources a { color: inherit !important; }
+}
+
+/* ============================================================
+   10. DIAGNÓSTICO DE PAGINAÇÃO (abra a página com ?debug)
+   ============================================================ */
+
+.is-overflowing { outline: 5px solid var(--alert); outline-offset: -5px; }
+
+.is-overflowing::before {
+  content: "CONTEÚDO EXCEDE A FOLHA A4";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  background: var(--alert);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-align: center;
+  padding: 7px;
+}
+
+@media print {
+  .is-overflowing { outline: none !important; }
+  .is-overflowing::before { display: none !important; }
+}

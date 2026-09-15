@@ -1,0 +1,77 @@
+/* ============================================================
+   7. TEMAS POR MISSÃO
+   Cada folha define --mission; todo o resto (faixa do painel,
+   numeração, etiquetas, ganchos) herda dessa variável.
+   ============================================================ */
+
+/* Missão 01 — a cor de Franklin: o começo, o chão da indústria */
+.theme-franklin {
+  --mission: var(--franklin);
+  --mission-soft: rgba(143, 206, 0, 0.12);
+  background-color: #0d1206;
+}
+
+/* Missão 02 — a cor de Michael: o cinema entra no jogo */
+.theme-michael {
+  --mission: var(--michael);
+  --mission-soft: rgba(74, 137, 217, 0.12);
+  background-color: #070d16;
+}
+
+/* Missão 03 — Leonida: o destaque do e-book */
+.theme-leonida {
+  --mission: var(--vice-pink);
+  --mission-soft: rgba(255, 45, 149, 0.14);
+  background-color: #17041a;
+}
+
+.theme-leonida .panel {
+  background:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 45, 149, 0.18), transparent 60%),
+    linear-gradient(160deg, #1b0a24 0%, #2b0b3f 60%, #12121a 100%);
+  border-color: var(--ink);
+}
+
+.theme-leonida .panel::before { background: var(--sunset); height: 8px; }
+
+/* Nível de procurado — o capítulo do custo bilionário */
+.theme-wanted {
+  --mission: var(--alert);
+  --mission-soft: rgba(224, 32, 32, 0.12);
+  background-color: #140505;
+}
+
+.theme-wanted .panel {
+  background: linear-gradient(180deg, #16060a 0%, #0c0c10 70%);
+  border-color: var(--ink);
+}
+
+/* Missão 04 — a cor de Trevor: o caos criativo do indie */
+.theme-trevor {
+  --mission: var(--trevor);
+  --mission-soft: rgba(255, 128, 0, 0.12);
+  background-color: #150c02;
+}
+
+/* Missão bônus — o horizonte, no teal de Vice */
+.theme-horizon {
+  --mission: var(--vice-teal);
+  --mission-soft: rgba(0, 194, 199, 0.12);
+  background-color: #04141a;
+}
+
+/* Índice e dossiê */
+.theme-neutral {
+  --mission: #ffffff;
+  background-color: #0c0c10;
+}
+
+.theme-dossier {
+  --mission: #8a6d3b;
+  background-color: #16140f;
+}
+
+.theme-gold {
+  --mission: var(--vice-gold);
+  background-color: #0b0a06;
+}

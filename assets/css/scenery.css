@@ -1,0 +1,72 @@
+/* ============================================================
+   CENÁRIO DE FUNDO — LEONIDA AO ANOITECER
+   Feito só com CSS: nenhuma imagem, nenhuma requisição extra.
+   ============================================================ */
+
+.scenery {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 50% 82%, rgba(255, 107, 53, 0.22), transparent 62%),
+    linear-gradient(180deg, #05050a 0%, #140a24 42%, #2b0b3f 68%, #0a0a0c 100%);
+}
+
+/* Sol baixo, cortado por linhas — a marca do pôr do sol de Vice */
+.scenery-sun {
+  position: absolute;
+  left: 50%;
+  bottom: 26vh;
+  width: 380px;
+  height: 380px;
+  margin-left: -190px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffd79a 0%, #ff6b35 45%, #ff2d95 100%);
+  opacity: 0.3;
+  -webkit-mask-image: repeating-linear-gradient(180deg, #000 0 16px, transparent 16px 23px);
+  mask-image: repeating-linear-gradient(180deg, #000 0 16px, transparent 16px 23px);
+}
+
+/* Silhueta da cidade */
+.scenery-skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24vh;
+  height: 17vh;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%201600%20220%27%20preserveAspectRatio=%27none%27%3E%3Crect%20x=%270%27%20y=%27136%27%20width=%2748%27%20height=%2784%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2757%27%20y=%27162%27%20width=%2769%27%20height=%2758%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27130%27%20y=%27150%27%20width=%2762%27%20height=%2770%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27200%27%20y=%27160%27%20width=%2765%27%20height=%2760%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27276%27%20y=%27165%27%20width=%2741%27%20height=%2755%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27321%27%20y=%2767%27%20width=%2755%27%20height=%27153%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27346%27%20y=%2745%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27380%27%20y=%2766%27%20width=%2763%27%20height=%27154%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27409%27%20y=%2744%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27455%27%20y=%27117%27%20width=%2735%27%20height=%27103%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27503%27%20y=%27159%27%20width=%2768%27%20height=%2761%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27583%27%20y=%2773%27%20width=%2765%27%20height=%27147%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27613%27%20y=%2751%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27654%27%20y=%27140%27%20width=%2730%27%20height=%2780%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27691%27%20y=%27138%27%20width=%2754%27%20height=%2782%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27756%27%20y=%2796%27%20width=%2735%27%20height=%27124%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27802%27%20y=%27128%27%20width=%2771%27%20height=%2792%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27877%27%20y=%27126%27%20width=%2765%27%20height=%2794%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27950%27%20y=%27158%27%20width=%2734%27%20height=%2762%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27996%27%20y=%27122%27%20width=%2731%27%20height=%2798%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271037%27%20y=%2765%27%20width=%2771%27%20height=%27155%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271118%27%20y=%2758%27%20width=%2765%27%20height=%27162%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271148%27%20y=%2736%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271189%27%20y=%27128%27%20width=%2778%27%20height=%2792%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271281%27%20y=%27112%27%20width=%2777%27%20height=%27108%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271362%27%20y=%2798%27%20width=%2764%27%20height=%27122%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271437%27%20y=%2787%27%20width=%2759%27%20height=%27133%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271503%27%20y=%27156%27%20width=%2766%27%20height=%2764%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271573%27%20y=%2767%27%20width=%2760%27%20height=%27153%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%271601%27%20y=%2745%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 100%;
+  opacity: 0.92;
+}
+
+/* Linha do horizonte em neon */
+.scenery-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24vh;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--vice-teal), transparent);
+  box-shadow: 0 0 26px rgba(0, 194, 199, 0.8);
+  opacity: 0.55;
+}
+
+/* Asfalto em perspectiva.
+   A grade é um SVG já desenhado em perspectiva. A versão anterior usava
+   perspective() + rotateX(72deg) numa camada gigante e fixa: a cada rolagem
+   o Chrome rerasterizava tudo e o renderizador congelava. */
+.scenery-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24vh;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%201400%20420%27%20preserveAspectRatio=%27none%27%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-1400.0%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-1238.5%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-1076.9%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-915.4%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-753.8%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-592.3%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-430.8%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-269.2%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27-107.7%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%2753.8%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27215.4%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27376.9%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27538.5%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27700.0%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%27861.5%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271023.1%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271184.6%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271346.2%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271507.7%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271669.2%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271830.8%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%271992.3%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%272153.8%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%272315.4%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%272476.9%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%272638.5%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27700.0%27%20y1=%27-231.0%27%20x2=%272800.0%27%20y2=%27420%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%270.5%27%20x2=%271400%27%20y2=%270.5%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%273.2%27%20x2=%271400%27%20y2=%273.2%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%279.3%27%20x2=%271400%27%20y2=%279.3%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2719.6%27%20x2=%271400%27%20y2=%2719.6%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2735.0%27%20x2=%271400%27%20y2=%2735.0%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2756.3%27%20x2=%271400%27%20y2=%2756.3%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2784.0%27%20x2=%271400%27%20y2=%2784.0%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27118.9%27%20x2=%271400%27%20y2=%27118.9%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27161.4%27%20x2=%271400%27%20y2=%27161.4%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27212.3%27%20x2=%271400%27%20y2=%27212.3%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27272.0%27%20x2=%271400%27%20y2=%27272.0%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27341.1%27%20x2=%271400%27%20y2=%27341.1%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27420.0%27%20x2=%271400%27%20y2=%27420.0%27%20stroke=%27rgba(0,194,199,0.42)%27%20stroke-width=%271%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.5;
+}

@@ -1,0 +1,51 @@
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* --- Superfícies --- */
+  --ink: #000000;
+  --asphalt: #0a0a0c;
+  --asphalt-2: #121217;
+  --steel: #1c1c23;
+  --line: #2f2f3a;
+  --text: #ececf1;
+  --text-dim: #9a9aa6;
+
+  /* --- GTA V: cores dos protagonistas, usadas como tema de missão --- */
+  --franklin: #8fce00;
+  --michael: #4a89d9;
+  --trevor: #ff8000;
+
+  /* --- GTA VI: paleta Vice / Leonida --- */
+  --vice-pink: #ff2d95;
+  --vice-orange: #ff6b35;
+  --vice-gold: #ffc247;
+  --vice-teal: #00c2c7;
+
+  /* --- HUD --- */
+  --wanted: #ffd400;
+  --alert: #e02020;
+  --money: #7ab317;
+  --dossier: #e8dcc0;
+
+  /* --- Gradientes assinatura --- */
+  --sunset: linear-gradient(115deg, var(--vice-pink) 0%, var(--vice-orange) 55%, var(--vice-gold) 100%);
+  --dusk: linear-gradient(180deg, #2b0b3f 0%, #7c1f5e 45%, #ff6b35 80%, #ffc247 100%);
+
+  /* --- Cor ativa da missão (cada tema sobrescreve) --- */
+  --mission: var(--vice-pink);
+  --mission-soft: rgba(255, 45, 149, 0.12);
+
+  /* --- Geometria da folha --- */
+  --page-w: 21cm;
+  --page-h: 29.7cm;
+  --page-pad: 1cm;
+  --panel-border: 5px;
+
+  /* --- Tipografia --- */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+
+  /* --- Textura de filme (grão sutil, sem arquivo externo) --- */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
