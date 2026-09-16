@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## O que é
 
-E-book estático de página única sobre a evolução dos videogames, contada pela série Grand Theft Auto. HTML + CSS + um arquivo JS, sem build, sem dependências, sem framework. Publicado via GitHub Pages em `https://maycondis.github.io/E-book-A_Evolucao_dos_Games/`.
+E-book estático de página única sobre a evolução dos videogames, contada pela série Grand Theft Auto. HTML + CSS + um arquivo JS, sem build, sem dependências, sem framework. Publicado via GitHub Pages em `https://maycondis.github.io/E-book-A_Evolucao_dos_Games/ebook.html`.
+
+O e-book mora em `ebook.html`. Não há `index.html`, por decisão dos autores: o endereço raiz do site (`.../E-book-A_Evolucao_dos_Games/`) não tem página. Todo link para a obra deve apontar para `ebook.html`.
 
 Idioma do conteúdo, dos comentários no código e das mensagens de commit: **português do Brasil**.
 
@@ -19,7 +21,7 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ### Auditor de paginação embutido
 
-Abrir com `?debug` na URL (`http://127.0.0.1:8000/index.html?debug`) marca em vermelho qualquer folha cujo conteúdo ultrapasse a A4 — conteúdo que sairia **cortado sem aviso** no PDF, porque `.sheet` tem `overflow: hidden`. O aviso também vai ao console sempre, com ou sem `?debug`.
+Abrir com `?debug` na URL (`http://127.0.0.1:8000/ebook.html?debug`) marca em vermelho qualquer folha cujo conteúdo ultrapasse a A4 — conteúdo que sairia **cortado sem aviso** no PDF, porque `.sheet` tem `overflow: hidden`. O aviso também vai ao console sempre, com ou sem `?debug`.
 
 ### Verificação obrigatória após mexer em conteúdo ou CSS
 
@@ -88,6 +90,14 @@ Onze missões em ordem cronológica, de GTA 1 (1997) a GTA VI (2026), mais índi
 
 Regra editorial a preservar: **o que é resultado medido e o que é promessa de fabricante ficam separados no texto.** A folha de GTA VI afirma data e plataformas (conferidas na página oficial da Rockstar) mas marca desempenho e simulação como promessa de trailer. Ao atualizar dados de mercado ou da série, conferir na fonte primária e ajustar a data de verificação citada no rodapé da folha.
 
+## Relatório de extensão
+
+`Extensão Universitária/Ebook (50h)/` segue o padrão das pastas de extensão universitária do repositório CasalFlow: `relatorio.html` (ABNT, A4), `RELATORIO.md` e `assets/` com logo e figuras. O Anexo A do relatório é uma **cópia** do `ebook.html` e dos módulos CSS, montada por `gerar_relatorio.py`, na mesma pasta, que acha o `ebook.html` subindo as pastas a partir de onde está. Ao mudar o e-book, rodar o script de novo em vez de editar o anexo à mão. O CSS de base do relatório vem da pasta da Cartilha no CasalFlow, por caminho absoluto no topo do script.
+
+`Extensão Universitária/MODELO/` guarda só os documentos oficiais da UNIP — regulamento, orientações aos alunos, perguntas frequentes, relação de áreas temáticas, modelo da carta de apresentação e o modelo Word do relatório. É referência local e fica **fora do git** (`.gitignore`). Os documentos de planejamento do CasalFlow não pertencem a este projeto: continuam no repositório CasalFlow.
+
+Depois de mexer no texto do relatório, conferir no navegador que nenhuma `body > section.page` passa de 29,7cm de altura: a folha cresce em vez de cortar, e na impressão isso vira uma página extra que desloca a numeração do sumário.
+
 ## Autoria
 
-Trabalho acadêmico de Gabriel Alves Moreira (R.A. H67HJ4) e Maycon Douglas Inácio Silva (R.A. H719CD3). Os nomes e R.A. aparecem na capa, nas meta tags, no rodapé da folha final e no README — ao alterar um, alterar todos.
+Trabalho acadêmico de Gabriel Alves Moreira (R.A. H67HJ4), Maciel Costa da Silva (R.A. R280985) e Maycon Douglas Inácio Silva (R.A. H719CD3). Os nomes e R.A. aparecem na capa, nas meta tags, no rodapé da folha final, no README, na imagem de compartilhamento `assets/img/capa.png` e no relatório de extensão — ao alterar um, alterar todos.

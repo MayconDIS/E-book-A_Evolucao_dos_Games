@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Extensão Universitária — Ebook (50h)</title>
+    <!--
+      ────────────────────────────────────────────────────────────────────────
+      RELATÓRIO DE ATIVIDADE DE EXTENSÃO UNIVERSITÁRIA (50 horas)
+      UNIP · ICET · CST em Análise e Desenvolvimento de Sistemas
+      Ação: Ebook
+
+      Formato ABNT: A4, margens 3cm superior/esquerda e 2cm inferior/direita,
+      Arial 12pt, parágrafo justificado com recuo de 1,5cm.
+      Para gerar o PDF: abrir no Chrome, anexar as imagens da seção 4 clicando
+      sobre elas (se quiser trocá-las) e imprimir (Ctrl+P) na MESMA sessão, com
+      "Gráficos de segundo plano" marcado.
+
+      O ANEXO A (folhas 14 a 27) é o e-book. Para tirar a peça para
+      distribuir: Ctrl+P, intervalo de páginas 14-27, papel A4 e
+      "Gráficos de segundo plano" marcado.
+
+      O Anexo A é CÓPIA de ebook.html e assets/css/modules/, gerada por script.
+      Se o e-book mudar, regerar este relatório — não editar o anexo à mão.
+
+      PENDÊNCIAS: todo trecho com fundo amarelo tracejado (.pendente) depende de
+      informação que só os alunos têm. Resolver todos antes de submeter.
+      ────────────────────────────────────────────────────────────────────────
+    -->
+    <style>
+        @layer relatorio, peca;
+
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @layer relatorio {
+            /* 1. RESET GERAL E CONFIGURAÇÃO DO BODY */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: #525659;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 30px;
+                font-family: Arial, "Times New Roman", serif;
+                font-size: 12pt;
+                color: black;
+            }
+
+            /* 2. ESTRUTURA DA PÁGINA (Padrão ABNT Estrito - A4) */
+            .page {
+                background-color: white;
+                width: 21cm;
+                min-height: 29.7cm;
+                /* Margens ABNT: Superior 3cm, Direita 2cm, Inferior 2cm, Esquerda 3cm */
+                padding: 3cm 2cm 2cm 3cm;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                position: relative;
+            }
+
+            /* 3. NUMERAÇÃO DE PÁGINAS (ABNT - Canto superior direito) */
+            .page-number {
+                position: absolute;
+                top: 2cm;
+                right: 2cm;
+                font-size: 10pt;
+                font-family: Arial, "Times New Roman", serif;
+            }
+
+            /* 4. TIPOGRAFIA E TEXTOS */
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: bold;
+                color: black;
+                margin-top: 1.1em;
+                margin-bottom: 0.7em;
+                text-indent: 0;
+            }
+
+            h1, h2 {
+                text-align: center;
+                font-size: 14pt;
+            }
+
+            h3, h4 {
+                text-align: left;
+                font-size: 12pt;
+            }
+
+            h2:first-of-type, h3:first-child { margin-top: 0; }
+
+            p {
+                text-align: justify;
+                line-height: 1.5;
+                text-indent: 1.5cm; /* Recuo de primeira linha */
+                margin-top: 0;
+                margin-bottom: 0.8em;
+            }
+
+            ul, ol {
+                margin: 0 0 0.8em 1.5cm;
+                padding-left: 0.8cm;
+                line-height: 1.5;
+                text-align: justify;
+            }
+
+            li { margin-bottom: 0.35em; }
+
+            .uppercase { text-transform: uppercase; }
+            .no-indent { text-indent: 0; }
+
+            /* Campo ainda por preencher — visível de propósito, inclusive impresso. */
+            .pendente {
+                background-color: #ffe9a8;
+                border: 1px dashed #b58900;
+                padding: 0 4px;
+                font-weight: bold;
+            }
+
+            /* 5. TABELAS (Estrutura e Design Padrão) */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+                font-size: 12pt;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+
+            td {
+                text-align: center;
+            }
+
+            .table-dados td:first-child { text-align: left; font-weight: bold; width: 32%; }
+            .table-dados td:last-child { text-align: left; }
+
+            /* 6. SUMÁRIO (Estilo Índice ABNT) */
+            .sumario-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 12px;
+                font-size: 12pt;
+            }
+
+            .sumario-item a {
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+            }
+
+            .sumario-item a:hover {
+                text-decoration: underline;
+            }
+
+            .sumario-dots {
+                flex-grow: 1;
+                border-bottom: 1px dotted #000;
+                margin: 0 10px;
+                position: relative;
+                top: -4px;
+            }
+
+            /* 7. IMAGENS E LEGENDAS */
+            .image-container {
+                text-align: center;
+                margin: 20px 0;
+                page-break-inside: avoid;
+            }
+
+            .image-container img {
+                max-width: 100%;
+                max-height: 11cm;
+                height: auto;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+                cursor: pointer;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            .image-container img:hover {
+                opacity: 0.8;
+            }
+
+            .caption {
+                text-align: center;
+                font-size: 10pt;
+                text-indent: 0;
+            }
+
+            .figure-title {
+                text-align: center;
+                font-size: 10pt;
+                text-indent: 0;
+                margin-bottom: 5px;
+            }
+
+            /* 8. ESTILOS DA CAPA */
+            .logo-unip {
+                display: block;
+                margin: 0 auto 0.5cm auto;
+                width: 6cm;
+                border: none !important;
+                cursor: default !important;
+            }
+
+            .logo-unip:hover { opacity: 1 !important; }
+
+            .capa-header {
+                text-align: center;
+                line-height: 1.5;
+                margin-bottom: 2cm;
+                font-size: 12pt;
+                font-weight: normal;
+            }
+
+            .table-capa {
+                width: 75%;
+                margin: 0 auto;
+                border: none !important;
+                border-collapse: collapse;
+            }
+
+            .table-capa th, .table-capa td {
+                border: none !important;
+                padding: 4px 8px;
+                background-color: transparent;
+                text-align: left;
+                font-size: 12pt;
+            }
+
+            .table-capa th { font-weight: bold; }
+            .table-capa td { font-weight: normal; }
+
+            .capa-footer {
+                position: absolute;
+                bottom: 2cm;
+                left: 3cm;
+                right: 2cm;
+                text-align: center;
+                line-height: 1.5;
+                font-weight: bold;
+            }
+
+            /* 9. RESPONSIVIDADE (Mobile) */
+            @media screen and (max-width: 800px) {
+                body { padding: 10px; }
+                .page { width: 100%; height: auto !important; min-height: auto; padding: 20px; margin-bottom: 15px; box-shadow: none; }
+                .capa-footer { position: relative; bottom: auto; left: auto; right: auto; margin-top: 2cm; }
+                .table-capa { width: 100%; margin-top: 2cm; margin-bottom: 2cm; }
+                p { text-indent: 1cm; }
+                ul, ol { margin-left: 0.5cm; }
+                .sumario-dots { display: none; }
+            }
+
+            /* 10. MÍDIA DE IMPRESSÃO (PDF limpo) */
+
+            @media print {
+                body { background-color: white; margin: 0; padding: 0; gap: 0; display: block; }
+                .page {
+                    box-shadow: none; margin: 0; border: none;
+                    width: 100%;
+                    min-height: 29.5cm;
+                    page-break-after: always;
+                }
+                .page:last-of-type { page-break-after: auto; }
+                .image-container img { cursor: default; }
+                .image-container img:hover { opacity: 1; }
+            }
+        }
+
+        
+        @layer relatorio {
+            /* 11. QUADRO DE CONTEÚDO (acréscimo deste relatório)
+               Três colunas com texto corrido não cabem em 12pt sem quebrar a folha;
+               a ABNT admite corpo menor em tabelas e quadros. */
+            .table-conteudo { font-size: 10pt; }
+            .table-conteudo th, .table-conteudo td { text-align: left; vertical-align: top; padding: 5px 7px; line-height: 1.3; }
+            .table-conteudo td:first-child { font-weight: bold; width: 27%; }
+            .table-conteudo td:nth-child(2) { width: 25%; }
+        }
+
+        @layer peca {
+            /* Mesmo desenho da Cartilha: o relatório estiliza elementos nus (p, li,
+               h1..h6, ul, ol, table) com recuo ABNT, justificação e 12pt; o reset em
+               sub-camada `base` impede esse estilo de vazar para dentro do e-book, e
+               `@scope` impede o e-book de vazar para fora. `arte` vence `base` sempre. */
+            @layer base, arte;
+
+            @layer base {
+                .anexo-a, .anexo-a * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+                .anexo-a, .anexo-a * { box-sizing: border-box; margin: 0; padding: 0; }
+
+                .anexo p, .anexo li, .anexo h1, .anexo h2, .anexo h3, .anexo h4,
+                .anexo h5, .anexo h6, .anexo ul, .anexo ol,
+                .anexo table, .anexo th, .anexo td, .anexo dl, .anexo dt, .anexo dd {
+                    margin: 0;
+                    padding: 0;
+                    text-indent: 0;
+                    text-align: inherit;
+                    line-height: inherit;
+                    font-size: inherit;
+                    color: inherit;
+                    border: 0;
+                    background-color: transparent;
+                }
+            }
+
+            @layer arte {
+                /* ═══ Anexo A: e-book "A Evolução dos Games" ═══
+                   Copiado de assets/css/modules/ por script. Não editar aqui:
+                   corrigir no e-book e regerar este relatório. */
+
+/* ── tokens.css ── */
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* --- Superfícies --- */
+  --ink: #000000;
+  --asphalt: #0a0a0c;
+  --asphalt-2: #121217;
+  --steel: #1c1c23;
+  --line: #2f2f3a;
+  --text: #ececf1;
+  --text-dim: #9a9aa6;
+
+  /* --- GTA V: cores dos protagonistas, usadas como tema de missão --- */
+  --franklin: #8fce00;
+  --michael: #4a89d9;
+  --trevor: #ff8000;
+
+  /* --- GTA VI: paleta Vice / Leonida --- */
+  --vice-pink: #ff2d95;
+  --vice-orange: #ff6b35;
+  --vice-gold: #ffc247;
+  --vice-teal: #00c2c7;
+
+  /* --- Eras adicionais da série --- */
+  --hd-washed: #9fb3c8;    /* GTA IV: o azul lavado da era HD (acento, não superfície) */
+  --desert: #e0a32e;      /* San Andreas: deserto e Las Venturas */
+  --violet: #a855f7;       /* o horizonte, depois de Leonida */
+  --vice-teal-deep: #0fb3b8;
+
+  /* --- HUD --- */
+  --wanted: #ffd400;
+  --alert: #e02020;
+  /* Os tons acima são saturados para preenchimento. Em texto pequeno sobre
+     fundo escuro eles não alcançam 4.5:1 — estas são as versões de texto. */
+  --alert-ink: #ff6a6a;
+  --violet-ink: #c084fc;
+  --money: #7ab317;
+  --dossier: #e8dcc0;
+
+  /* --- Gradientes assinatura --- */
+  --sunset: linear-gradient(115deg, var(--vice-pink) 0%, var(--vice-orange) 55%, var(--vice-gold) 100%);
+  --dusk: linear-gradient(180deg, #2b0b3f 0%, #7c1f5e 45%, #ff6b35 80%, #ffc247 100%);
+
+  /* --- Cor ativa da missão (cada tema sobrescreve) --- */
+  --mission: var(--vice-pink);
+  --mission-soft: rgba(255, 45, 149, 0.12);
+
+  /* --- Geometria da folha --- */
+  --page-w: 21cm;
+  --page-h: 29.7cm;
+  --page-pad: 1cm;
+  --panel-border: 5px;
+
+  /* --- Tipografia --- */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+
+  /* --- Textura de filme (grão sutil, sem arquivo externo) --- */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ── @keyframes de motion.css (não valem dentro de @scope) ── */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+                @scope (.anexo-a) {
+/* ── base.css ── */
+/* ============================================================
+   2. RESET, BASE & TIPOGRAFIA
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--asphalt);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Tipografia de pôster: condensada, caixa alta, sem serifa --- */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  /* Nunca abaixo de 1: line-height apertado corta til e cedilha */
+  line-height: 1.06;
+}
+
+h1 { font-size: 54pt; color: #fff; }
+h2 { font-size: 30pt; color: #fff; }
+h3 { font-size: 13pt; letter-spacing: 0.08em; }
+
+p {
+  font-size: 12pt;
+  line-height: 1.55;
+  margin-bottom: 0.4cm;
+  color: var(--text-dim);
+}
+
+strong { color: #fff; font-weight: 800; }
+em { color: var(--text); font-style: italic; }
+
+/* Primeira frase do capítulo puxa o olho, sem capitular de fliperama */
+.lede {
+  font-size: 13.5pt;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* --- Marcador de dado no texto (estilo etiqueta de HUD) --- */
+.tag {
+  background-color: var(--mission);
+  color: var(--ink);
+  padding: 1px 7px;
+  font-weight: 800;
+  font-size: 11.5pt;
+  white-space: nowrap;
+}
+
+/* --- Valores monetários no verde do HUD --- */
+.money { color: var(--money); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* --- Rótulo pequeno em caixa alta (eyebrow) --- */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mission);
+}
+
+/* --- Acessibilidade --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--wanted);
+  outline-offset: 3px;
+}
+
+/* ── layout.css ── */
+/* ============================================================
+   3. LAYOUT — GRADE DE FOLHAS & MENU DE PAUSA
+   ============================================================ */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+  padding: 44px 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Cada .sheet é exatamente uma folha A4 */
+.sheet {
+  width: var(--page-w);
+  height: var(--page-h);
+  padding: var(--page-pad);
+  background-color: var(--asphalt-2);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  overflow: hidden;
+}
+
+/* Grão de filme: UMA camada fixa do tamanho da janela, sobre tudo.
+   Aplicar o grão em cada folha criava 10 camadas do tamanho de uma A4
+   e travava o renderizador ao rolar a página. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 180px 180px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* ============================================================
+   MENU DE PAUSA (navegação lateral, no espírito do menu do GTA V)
+   ============================================================ */
+
+#pause-menu {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  z-index: 20;
+  /* Sem backdrop-filter: numa página longa ele obriga o navegador a
+     recompor tudo que está atrás a cada rolagem. */
+  background: #08080a;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.menu-tab {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 12pt;
+  letter-spacing: 0.06em;
+  padding: 9px 14px;
+}
+
+.menu-body { padding: 14px; }
+
+/* Radar circular do HUD */
+.radar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 16px auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 194, 199, 0.18), transparent 70%),
+    #0e0e12;
+}
+
+.radar::before,
+.radar::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.radar::before { left: 0; right: 0; top: 50%; height: 1px; }
+.radar::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+
+.radar-blip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  background: var(--vice-pink);
+  border: 1px solid #fff;
+  transform: rotate(45deg);
+}
+
+#pause-menu ol {
+  list-style: none;
+  counter-reset: mission;
+}
+
+#pause-menu li { counter-increment: mission; }
+
+#pause-menu a {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: baseline;
+  gap: 6px;
+  padding: 7px 8px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+#pause-menu a::before {
+  content: counter(mission, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 11.5pt;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#pause-menu a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+#pause-menu a.active {
+  background: #fff;
+  color: var(--ink);
+  border-left-color: var(--vice-pink);
+}
+
+#pause-menu a.active::before { color: var(--vice-pink); }
+
+.menu-hud {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 12px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media screen and (max-width: 1480px) {
+  #pause-menu { display: none; }
+}
+
+@media screen and (max-width: 900px) {
+  .sheet {
+    width: 100%;
+    max-width: var(--page-w);
+    height: auto;
+    padding: 14px;
+  }
+  main { padding: 20px 14px; gap: 20px; }
+  h1 { font-size: 34pt; }
+  h2 { font-size: 22pt; }
+  p { font-size: 11.5pt; }
+}
+
+/* ── panels.css ── */
+/* ============================================================
+   4. PAINEL DE QUADRINHO, CABEÇALHO DE MISSÃO E HUD DE RODAPÉ
+   A moldura preta grossa é a citação direta da capa de GTA V.
+   ============================================================ */
+
+.panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--steel);
+  border: var(--panel-border) solid var(--ink);
+  padding: 0.75cm 0.9cm 0.6cm 0.9cm;
+  overflow: hidden;
+}
+
+/* Faixa de cor da missão no topo do painel */
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--mission);
+}
+
+/* --- Cabeçalho: cartela de missão --- */
+.mission-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.mission-head h2 { max-width: 13cm; }
+
+.mission-id {
+  font-family: var(--font-display);
+  font-size: 40pt;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--mission);
+  opacity: 0.8;
+}
+
+.mission-objective {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.mission-objective::before {
+  content: "OBJETIVO: ";
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--mission);
+}
+
+/* --- Rodapé: barra de HUD --- */
+.hud-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.hud-source {
+  font-size: 8.5pt;
+  line-height: 1.4;
+  color: #8f8f9c;
+  max-width: 13.5cm;
+}
+
+.hud-source::before {
+  content: "FONTE";
+  display: block;
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--mission);
+  margin-bottom: 2px;
+}
+
+.hud-page {
+  font-family: var(--font-display);
+  font-size: 22pt;
+  line-height: 1;
+  color: var(--mission);
+}
+
+/* --- Gancho de virada de página --- */
+.cliffhanger {
+  border-left: 3px solid var(--mission);
+  padding-left: 12px;
+  margin-bottom: 0.35cm;
+  font-size: 11.5pt;
+  font-style: italic;
+  color: var(--text);
+}
+
+.hud-source { margin-bottom: 0; }
+
+/* --- Selo do capítulo em destaque --- */
+.gta-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  background: var(--sunset);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  padding: 7px 14px;
+}
+
+/* ── missions.css ── */
+/* ============================================================
+   5. COMPONENTES DE MISSÃO
+   Briefing, dossiê, ganhos x riscos e nível de procurado.
+   ============================================================ */
+
+/* --- Caixa de briefing / inteligência --- */
+.briefing {
+  background: var(--asphalt);
+  border-left: 5px solid var(--mission);
+  padding: 12px 14px;
+  margin: 0.35cm 0;
+  position: relative;
+}
+
+.briefing p { margin-bottom: 0; font-size: 11pt; color: var(--text); }
+
+.briefing-label {
+  display: block;
+  font-size: 7.5pt;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--mission);
+  margin-bottom: 5px;
+}
+
+/* Variante escura para alertas */
+.briefing.is-alert {
+  border-left-color: var(--alert);
+  background: linear-gradient(90deg, rgba(224, 32, 32, 0.14), transparent 60%);
+}
+
+.briefing.is-alert .briefing-label { color: var(--alert-ink); }
+
+/* --- Ganhos x Riscos: dois painéis de HUD lado a lado --- */
+.ledger {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0.35cm 0;
+}
+
+.ledger-col {
+  background: var(--asphalt);
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+}
+
+.ledger-col h3 {
+  font-family: var(--font-ui);
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid currentColor;
+}
+
+.ledger-col.is-gain { border-top: 4px solid var(--money); }
+.ledger-col.is-gain h3 { color: var(--money); }
+.ledger-col.is-risk { border-top: 4px solid var(--alert); }
+.ledger-col.is-risk h3 { color: var(--alert-ink); }
+
+.ledger-col ul { list-style: none; }
+
+.ledger-col li {
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--text-dim);
+  padding-left: 15px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.ledger-col li:last-child { margin-bottom: 0; }
+
+.ledger-col li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  background: currentColor;
+}
+
+.ledger-col.is-gain li::before { background: var(--money); }
+.ledger-col.is-risk li::before { background: var(--alert); }
+
+/* --- Lista de tópicos numerada, estilo objetivos de missão --- */
+.objectives {
+  list-style: none;
+  counter-reset: obj;
+  margin: 0.3cm 0;
+}
+
+.objectives li {
+  counter-increment: obj;
+  position: relative;
+  padding-left: 34px;
+  margin-bottom: 11px;
+  font-size: 11pt;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.objectives li::before {
+  content: counter(obj, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-size: 12pt;
+  color: var(--mission);
+}
+
+/* --- Nível de procurado (estrelas do HUD) --- */
+.wanted {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.3cm 0;
+}
+
+.wanted-star {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: var(--wanted);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.wanted-star.is-empty { background-color: #3a3a44; }
+
+.wanted-label {
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--wanted);
+  margin-left: 6px;
+}
+
+/* --- Dossiê de fontes (papel manila) --- */
+.dossier-sheet { background: #16140f; }
+.dossier-sheet .panel { background: var(--dossier); border-color: #0c0c0c; }
+.dossier-sheet .panel h2 { color: #14120c; }
+.dossier-sheet .panel p { color: #45402f; }
+.dossier-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.25); }
+
+/* Sobre papel manila, os cinzas do tema escuro somem: reancorados no marrom. */
+.dossier-sheet .mission-objective { color: #55503f; }
+.dossier-sheet .hud-source { color: #55503f; }
+.dossier-sheet .panel strong { color: #14120c; }
+
+.sources { list-style: none; }
+
+.sources li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 7px 0;
+}
+
+.sources a { text-decoration: none; display: block; }
+
+.source-name {
+  font-family: var(--font-display);
+  font-size: 12pt;
+  color: #14120c;
+  letter-spacing: 0.01em;
+}
+
+.sources a:hover .source-name { color: var(--vice-pink); }
+
+.source-note {
+  display: block;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #5a5340;
+}
+
+/* --- Índice: seleção de missões --- */
+.mission-select { list-style: none; counter-reset: pick; }
+
+.mission-select li {
+  counter-increment: pick;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 11px 0;
+}
+
+.mission-select li::before {
+  content: counter(pick, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: 24pt;
+  color: var(--line);
+  line-height: 1;
+}
+
+.mission-select a {
+  font-family: var(--font-display);
+  font-size: 15pt;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.mission-select a:hover { color: var(--vice-pink); }
+
+.mission-select .pick-note {
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* ── covers.css ── */
+/* ============================================================
+   6. CAPA EM PAINÉIS & TELA DE MISSÃO CUMPRIDA
+   A capa cita a colagem de quadrinhos de GTA V, repintada
+   com o pôr do sol de Leonida (GTA VI).
+   ============================================================ */
+
+.cover-sheet { background: var(--ink); padding: 0.6cm; }
+
+.cover-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1.1fr 1.5fr 1fr 1fr;
+  gap: 7px;
+  background: var(--ink);
+}
+
+.cell {
+  position: relative;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  outline: 1px solid rgba(255, 255, 255, 0.12);
+  outline-offset: -4px;
+}
+
+/* --- Painel do título (faixa central) --- */
+.cell-title {
+  grid-column: 1 / -1;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.5cm;
+  gap: 10px;
+}
+
+.cover-kicker {
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  color: var(--vice-teal);
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 46pt;
+  line-height: 1.04;
+  text-transform: uppercase;
+  background: var(--sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--vice-pink);
+}
+
+.cover-sub {
+  font-size: 10pt;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* --- Painel: pôr do sol de Leonida --- */
+.cell-sunset { background: var(--dusk); }
+
+.cell-sunset::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  width: 110px;
+  height: 110px;
+  margin-left: -55px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff3b0, #ff6b35);
+  opacity: 0.95;
+}
+
+.cell-sunset::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0 9px, rgba(0, 0, 0, 0.35) 9px 12px);
+}
+
+/* --- Painel: palmeiras --- */
+.cell-palms {
+  background-color: #ff9a5c;
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20120%27%3E%3Cpath%20d=%27M47%20118%20Q43%2086%2041%2056%20L50%2055%20Q52%2086%2054%20118%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q24%2030%202%2036%20Q24%2041%2045%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q31%2016%2015%203%20Q35%2023%2047%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2052%20Q53%2013%2073%202%20Q58%2025%2050%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M47%2052%20Q72%2025%2097%2030%20Q72%2037%2048%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2054%20Q69%2049%2092%2064%20Q67%2055%2047%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M44%2054%20Q22%2051%203%2067%20Q26%2056%2045%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2740%27%20cy=%2758%27%20r=%274%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2751%27%20cy=%2760%27%20r=%273.5%27%20fill=%27%25230a0a0c%27/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20120%27%3E%3Cpath%20d=%27M47%20118%20Q43%2086%2041%2056%20L50%2055%20Q52%2086%2054%20118%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q24%2030%202%2036%20Q24%2041%2045%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M45%2052%20Q31%2016%2015%203%20Q35%2023%2047%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2052%20Q53%2013%2073%202%20Q58%2025%2050%2054%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M47%2052%20Q72%2025%2097%2030%20Q72%2037%2048%2057%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M46%2054%20Q69%2049%2092%2064%20Q67%2055%2047%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Cpath%20d=%27M44%2054%20Q22%2051%203%2067%20Q26%2056%2045%2059%20Z%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2740%27%20cy=%2758%27%20r=%274%27%20fill=%27%25230a0a0c%27/%3E%3Ccircle%20cx=%2751%27%20cy=%2760%27%20r=%273.5%27%20fill=%27%25230a0a0c%27/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #ff9a5c 0%, #ff2d95 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: 18% 102%, 74% 102%, center;
+  background-size: 58% auto, 40% auto, cover;
+}
+
+/* --- Painel: skyline --- */
+.cell-skyline {
+  background-color: #0f1b33;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20420%20200%27%20preserveAspectRatio=%27none%27%3E%3Crect%20x=%270%27%20y=%2729%27%20width=%2737%27%20height=%27171%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2716%27%20y=%277%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2750%27%20y=%2774%27%20width=%2732%27%20height=%27126%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%2790%27%20y=%2765%27%20width=%2772%27%20height=%27135%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27124%27%20y=%2743%27%20width=%274%27%20height=%2722%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27174%27%20y=%27137%27%20width=%2757%27%20height=%2763%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27247%27%20y=%2785%27%20width=%2733%27%20height=%27115%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27290%27%20y=%27138%27%20width=%2772%27%20height=%2762%27%20fill=%27%2305050a%27/%3E%3Crect%20x=%27365%27%20y=%2775%27%20width=%2774%27%20height=%27125%27%20fill=%27%2305050a%27/%3E%3C/svg%3E"), linear-gradient(180deg, #0f1b33 0%, #2b0b3f 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom center, center;
+  background-size: 100% 62%, cover;
+}
+
+.cell-skyline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60%;
+  height: 2px;
+  background: var(--vice-teal);
+  box-shadow: 0 0 14px var(--vice-teal);
+}
+
+/* --- Painel: grade synthwave --- */
+.cell-grid {
+  background-color: #120425;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20420%20300%27%20preserveAspectRatio=%27none%27%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-420.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-341.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-262.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-183.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-105.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27-26.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%2752.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27131.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27210.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27288.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27367.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27446.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27525.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27603.8%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27682.5%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27761.2%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%27210.0%27%20y1=%27-165.0%27%20x2=%27840.0%27%20y2=%27300%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%271.0%27%20x2=%27420%27%20y2=%271.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%276.0%27%20x2=%27420%27%20y2=%276.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2717.2%27%20x2=%27420%27%20y2=%2717.2%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2736.4%27%20x2=%27420%27%20y2=%2736.4%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%2765.1%27%20x2=%27420%27%20y2=%2765.1%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27104.5%27%20x2=%27420%27%20y2=%27104.5%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27156.1%27%20x2=%27420%27%20y2=%27156.1%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27220.9%27%20x2=%27420%27%20y2=%27220.9%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3Cline%20x1=%270%27%20y1=%27300.0%27%20x2=%27420%27%20y2=%27300.0%27%20stroke=%27rgba(0,194,199,0.5)%27%20stroke-width=%271%27/%3E%3C/svg%3E"), linear-gradient(180deg, #1b0636 0%, #120425 100%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom center, center;
+  background-size: 100% 78%, cover;
+}
+
+/* --- Painel: estrelas de procurado --- */
+.cell-wanted {
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* --- Painel: dinheiro --- */
+.cell-money {
+  background: var(--money);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell-money span {
+  font-family: var(--font-display);
+  font-size: 40pt;
+  color: var(--ink);
+}
+
+/* --- Painel: assinatura do autor --- */
+.cell-author {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 16px;
+  gap: 1px;
+}
+
+.cell-author .label {
+  font-size: 7pt;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #6b6b75;
+}
+
+.cell-author .name {
+  font-family: var(--font-display);
+  font-size: 15pt;
+  color: var(--ink);
+  line-height: 1.12;
+}
+
+.cell-author .ra {
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #6c6c76;
+  margin-bottom: 4px;
+}
+
+/* ============================================================
+   TELA FINAL — MISSÃO CUMPRIDA
+   ============================================================ */
+
+.passed-sheet { background: #0b0a06; }
+.passed-sheet .panel { background: var(--ink); border-color: var(--vice-gold); }
+.passed-sheet .panel::before { background: var(--vice-gold); }
+
+.passed-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.passed-title {
+  font-family: var(--font-display);
+  font-size: 44pt;
+  line-height: 1.04;
+  color: var(--vice-gold);
+}
+
+.passed-sub {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.score-card {
+  width: 100%;
+  max-width: 13cm;
+  border-top: 2px solid rgba(255, 194, 71, 0.4);
+  border-bottom: 2px solid rgba(255, 194, 71, 0.4);
+  padding: 14px 0;
+  margin-top: 8px;
+}
+
+.score-card dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px 16px;
+  text-align: left;
+}
+
+.score-card dt {
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.score-card dd {
+  font-family: var(--font-display);
+  font-size: 13pt;
+  color: var(--vice-gold);
+  text-align: right;
+}
+
+.passed-note {
+  font-size: 11pt;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 13cm;
+  margin: 0;
+}
+
+/* Utilitários de span da grade da capa */
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: 1 / -1; }
+
+/* ── themes.css ── */
+/* ============================================================
+   7. TEMAS POR MISSÃO
+   Cada folha define --mission; todo o resto (faixa do painel,
+   numeração, etiquetas, ganchos) herda dessa variável.
+   ============================================================ */
+
+/* Missão 01 — 1997/1999: a era top-down, no verde de fósforo do começo */
+.theme-topdown {
+  --mission: var(--franklin);
+  --mission-soft: rgba(143, 206, 0, 0.12);
+  background-color: #0d1206;
+}
+
+/* Missão 02 — 2001: Liberty City entra na terceira dimensão */
+.theme-liberty {
+  --mission: var(--michael);
+  --mission-soft: rgba(74, 137, 217, 0.12);
+  background-color: #070d16;
+}
+
+/* Missão 03 — 2002/2004: Vice City e San Andreas, o neon e a escala */
+.theme-neon {
+  --mission: var(--vice-teal);
+  --mission-soft: rgba(0, 194, 199, 0.12);
+  background-color: #04141a;
+}
+
+/* Missão 04 — 2004: San Andreas, no ocre do deserto e de Las Venturas */
+.theme-desert {
+  --mission: var(--desert);
+  --mission-soft: rgba(224, 163, 46, 0.12);
+  background-color: #17110a;
+}
+
+/* Missão 05 — a controvérsia: papel de jornal no meio do neon.
+   A quebra visual é proposital — é o capítulo em que o mundo de fora entra. */
+.theme-press {
+  --mission: var(--alert);
+  background-color: #1a1a17;
+}
+
+.press-sheet .panel {
+  background: #ece9e1;
+  border-color: #17171a;
+}
+
+.press-sheet .panel h2,
+.press-sheet .mission-id { color: #14140f; }
+.press-sheet .mission-id { -webkit-text-stroke: 2px var(--alert); color: transparent; }
+.press-sheet .panel p { color: #3e3d35; }
+.press-sheet .mission-head { border-bottom-color: rgba(0, 0, 0, 0.28); }
+.press-sheet .mission-objective { color: #5c5a4e; }
+.press-sheet .hud-footer { border-top-color: rgba(0, 0, 0, 0.28); }
+.press-sheet .hud-source { color: #5c5a4e; }
+.press-sheet .briefing { background: #17171a; }
+.press-sheet .briefing .briefing-label { color: var(--alert-ink); }
+.press-sheet .briefing p { color: #e6e6ea; }
+.press-sheet .objectives li { color: #3e3d35; }
+.press-sheet .cliffhanger { color: #14140f; }
+.press-sheet .tag { color: #fff; }
+
+/* Sobre papel claro, o texto forte precisa escurecer — herdar o branco
+   do tema escuro deixava os destaques da lista praticamente invisíveis. */
+.press-sheet .panel strong { color: #14140f; }
+.press-sheet .panel em { color: #4a493e; }
+.press-sheet .objectives li::before { color: var(--alert); }
+
+/* Dentro do bloco escuro, o contraste volta a ser o do tema padrão. */
+.press-sheet .briefing strong { color: #ffffff; }
+.press-sheet .briefing em { color: #d8d8de; }
+
+/* Missão 06 — 2008: a era HD, na paleta lavada de GTA IV */
+.theme-realism {
+  --mission: var(--hd-washed);
+  --mission-soft: rgba(159, 179, 200, 0.12);
+  background-color: #0b0f13;
+}
+
+/* Missão 05 — 2013: três protagonistas, na cor de Trevor */
+.theme-phenomenon {
+  --mission: var(--trevor);
+  --mission-soft: rgba(255, 128, 0, 0.12);
+  background-color: #150c02;
+}
+
+/* Missão 03 — Leonida: o destaque do e-book */
+.theme-leonida {
+  --mission: var(--vice-pink);
+  --mission-soft: rgba(255, 45, 149, 0.14);
+  background-color: #17041a;
+}
+
+.theme-leonida .panel::before { background: var(--sunset); height: 8px; }
+
+/* Nível de procurado — o capítulo do custo bilionário */
+.theme-wanted {
+  --mission: var(--alert-ink);
+  --mission-soft: rgba(224, 32, 32, 0.12);
+  background-color: #140505;
+}
+
+/* Missão bônus — o que vem depois de Leonida */
+.theme-horizon {
+  --mission: var(--violet-ink);
+  --mission-soft: rgba(192, 132, 252, 0.12);
+  background-color: #100620;
+}
+
+/* Índice e dossiê */
+.theme-neutral {
+  --mission: #ffffff;
+  background-color: #0c0c10;
+}
+
+.theme-dossier {
+  --mission: #8a6d3b;
+  background-color: #16140f;
+}
+
+.theme-gold {
+  --mission: var(--vice-gold);
+  background-color: #0b0a06;
+}
+
+/* ============================================================
+   FUNDOS EM DEGRADE
+   Duas camadas, como na folha de Leonida: um brilho radial na cor
+   da missao, vindo do alto a direita, sobre um degrade linear escuro.
+   background-color fica separado de background-image de proposito —
+   é ele que garante contraste caso a imagem nao pinte.
+   ============================================================ */
+
+.theme-neutral .panel {
+  /* Neutro de propósito: é a folha de índice, e o cinza puro a separa
+     da folha de GTA IV, que também puxa para o azul-acinzentado. */
+  background-color: #0f0f11;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 255, 255, 0.10), transparent 60%),
+    linear-gradient(160deg, #1a1a1d 0%, #202024 60%, #0f0f11 100%);
+}
+
+.theme-topdown .panel {
+  background-color: #0a1008;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(143, 206,   0, 0.18), transparent 60%),
+    linear-gradient(160deg, #0f1c0a 0%, #162712 60%, #0a1008 100%);
+}
+
+.theme-liberty .panel {
+  background-color: #0a1018;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba( 74, 137, 217, 0.18), transparent 60%),
+    linear-gradient(160deg, #0b1626 0%, #12253a 60%, #0a1018 100%);
+}
+
+.theme-neon .panel {
+  background-color: #08161c;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(  0, 194, 199, 0.18), transparent 60%),
+    linear-gradient(160deg, #07202a 0%, #0d2f3a 60%, #08161c 100%);
+}
+
+.theme-desert .panel {
+  background-color: #15110b;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(224, 163,  46, 0.18), transparent 60%),
+    linear-gradient(160deg, #20190f 0%, #2c2214 60%, #15110b 100%);
+}
+
+.theme-realism .panel {
+  background-color: #0d1116;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(159, 179, 200, 0.18), transparent 60%),
+    linear-gradient(160deg, #141a20 0%, #1b232b 60%, #0d1116 100%);
+}
+
+.theme-phenomenon .panel {
+  background-color: #130d07;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 128,   0, 0.18), transparent 60%),
+    linear-gradient(160deg, #201306 0%, #2c1c09 60%, #130d07 100%);
+}
+
+.theme-wanted .panel {
+  background-color: #120608;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(224,  32,  32, 0.18), transparent 60%),
+    linear-gradient(160deg, #1d0709 0%, #2a0c0e 60%, #120608 100%);
+}
+
+.theme-leonida .panel {
+  background-color: #12121a;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255,  45, 149, 0.18), transparent 60%),
+    linear-gradient(160deg, #1b0a24 0%, #2b0b3f 60%, #12121a 100%);
+}
+
+.theme-horizon .panel {
+  background-color: #110b1d;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(192, 132, 252, 0.18), transparent 60%),
+    linear-gradient(160deg, #180b2c 0%, #251142 60%, #110b1d 100%);
+}
+
+.theme-gold .panel {
+  background-color: #120e06;
+  background-image:
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 194,  71, 0.18), transparent 60%),
+    linear-gradient(160deg, #1c1709 0%, #282010 60%, #120e06 100%);
+}
+
+/* As duas folhas de papel ganham um degrade discreto, sem brilho:
+   qualquer cor forte aqui derrubaria o contraste do texto escuro. */
+
+.press-sheet .panel {
+  background-color: #e6e2d6;
+  background-image: linear-gradient(165deg, #f3f0e8 0%, #e9e5db 55%, #ddd8cb 100%);
+}
+
+.dossier-sheet .panel {
+  background-color: #e0d4b4;
+  background-image: linear-gradient(165deg, #f0e7d2 0%, #e8dcc0 55%, #dccfab 100%);
+}
+
+/* ── motion.css ── */
+/* ============================================================
+   8. MOVIMENTO
+   ============================================================ */
+
+
+
+
+
+/* Varredura do radar no menu de pausa */
+.radar-sweep {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, rgba(0, 194, 199, 0.45), transparent 25%);
+  animation: radar-sweep 4s linear infinite;
+}
+
+.cell-skyline::after { animation: glow-pulse 5s ease-in-out infinite; }
+
+/* Respeita a preferência de menos movimento do sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── print.css ── */
+/* ============================================================
+   9. IMPRESSÃO / PDF
+   ============================================================ */
+
+#btn-pdf {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: var(--sunset);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 12pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 13px 20px;
+  border: 3px solid var(--ink);
+  box-shadow: 0 10px 26px rgba(255, 45, 149, 0.35);
+  cursor: pointer;
+  transition: transform 0.18s;
+}
+
+#btn-pdf:hover { transform: translateY(-2px); }
+
+@media print {
+  
+
+  #pause-menu,
+  #btn-pdf,
+  .scenery {
+    display: none !important;
+  }
+
+  body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: var(--asphalt) !important;
+  }
+
+  main {
+    display: block;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Uma .sheet = exatamente uma folha A4 */
+  .sheet {
+    width: 21cm;
+    height: 29.7cm;
+    min-height: 29.7cm;
+    margin: 0;
+    padding: 1cm;
+    box-shadow: none !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .sheet:last-of-type { page-break-after: auto; }
+
+  /* O grão de filme some no papel: vira sujeira na impressão */
+  body::after { display: none !important; }
+
+  /* Ajuste fino para o conteúdo não estourar a folha */
+  p { font-size: 11.5pt !important; line-height: 1.5 !important; margin-bottom: 0.35cm !important; }
+  .lede { font-size: 12.5pt !important; }
+  h2 { font-size: 26pt !important; }
+  .mission-id { font-size: 34pt !important; }
+  .briefing p { font-size: 10.5pt !important; }
+  .ledger-col li { font-size: 10pt !important; margin-bottom: 7px !important; }
+  .objectives li { font-size: 10.5pt !important; margin-bottom: 9px !important; }
+  .cliffhanger { font-size: 11pt !important; }
+  .source-name { font-size: 11pt !important; }
+  .source-note { font-size: 9pt !important; }
+  .sources li { padding: 5px 0 !important; }
+  .mission-select a { font-size: 14pt !important; }
+  .panel { padding: 0.7cm 0.85cm 0.55cm 0.85cm !important; }
+
+  .hud-footer { margin-top: auto !important; }
+
+  /* Preserva toda a direção de arte no PDF */
+  .sheet, .panel, .briefing, .ledger-col, .cell, .cover-grid,
+  .cover-title, .wanted-star, .passed-title, .score-card,
+  .mission-id, .hud-page, .tag, .dossier-sheet .panel {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .sources a { color: inherit !important; }
+}
+
+/* ============================================================
+   10. DIAGNÓSTICO DE PAGINAÇÃO (abra a página com ?debug)
+   ============================================================ */
+
+.is-overflowing { outline: 5px solid var(--alert); outline-offset: -5px; }
+
+.is-overflowing::before {
+  content: "CONTEÚDO EXCEDE A FOLHA A4";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  background: var(--alert);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-align: center;
+  padding: 7px;
+}
+
+@media print {
+  .is-overflowing { outline: none !important; }
+  .is-overflowing::before { display: none !important; }
+}
+
+                }
+
+                /* O `body` do e-book (Inter, cor de texto clara) não existe dentro do
+                   relatório; sem isto o miolo das folhas herdaria Arial e preto. */
+                .page.peca-a {
+                    font-family: var(--font-ui);
+                    color: var(--text);
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                @media screen {
+                    .anexo > .page { margin-bottom: 30px; }
+                }
+            }
+        }
+    </style>
+    <!-- Tipografia da peça (Anexo A). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="page" id="capa" aria-label="Capa do Trabalho">
+        <header>
+            <img src="assets/Logo UNIP.png" alt="Logo da Universidade Paulista" class="logo-unip" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/UNIP_Logo.svg/1200px-UNIP_Logo.svg.png'">
+            <div class="capa-header uppercase">
+                UNIVERSIDADE PAULISTA<br>
+                ICET - INSTITUTO DE CIÊNCIAS EXATAS E TECNOLOGIA<br>
+                CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS<br><br><br>
+                EXTENSÃO UNIVERSITÁRIA<br><br><br>
+                RELATÓRIO DE ATIVIDADE DE EXTENSÃO — EBOOK<br>
+                <span style="text-transform: none;">(A Evolução dos Games: a história do videogame contada pela série GTA)</span><br>
+                <span style="text-transform: none;">Carga horária: 50 horas</span>
+            </div>
+        </header>
+
+        <table class="table-capa" aria-label="Tabela de Autores">
+            <tr><th width="70%">Nome</th><th width="30%">R.A</th></tr>
+            <tr>
+                <td>Gabriel Alves Moreira</td>
+                <td>H67HJ4</td>
+            </tr>
+            <tr>
+                <td>Maciel Costa da Silva</td>
+                <td>R280985</td>
+            </tr>
+            <tr>
+                <td>Maycon Douglas Inácio Silva</td>
+                <td>H719CD3</td>
+            </tr>
+        </table>
+
+        <footer class="capa-footer uppercase">
+            São José dos Campos - SP<br>Setembro / 2026
+        </footer>
+    </section>
+
+    <section class="page" id="sumario">
+        <h2>Sumário</h2>
+
+        <div class="sumario-item">
+            <a href="#dados-cadastro">1. Dados de Cadastro</a>
+            <div class="sumario-dots"></div>
+            <span>3</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#descricao-1">2. Descrição da Atividade</a>
+            <div class="sumario-dots"></div>
+            <span>4</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#conclusao">3. Conclusão e Resultados Alcançados</a>
+            <div class="sumario-dots"></div>
+            <span>9</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#comprovacao">4. Comprovação</a>
+            <div class="sumario-dots"></div>
+            <span>11</span>
+        </div>
+
+        <div class="sumario-item">
+            <a href="#anexo-a">Anexo A &ndash; E-book &quot;A Evolução dos Games&quot; na íntegra</a>
+            <div class="sumario-dots"></div>
+            <span>14</span>
+        </div>
+    </section>
+
+    <section class="page" id="dados-cadastro">
+        <div class="page-number">3</div>
+        <h2>1. Dados de Cadastro</h2>
+
+        <h3>Campus</h3>
+        <p>Campus SJC Dutra - São José dos Campos (SP)</p>
+
+        <h3>Alunos Participantes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>R.A.</th>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>H67HJ4</td>
+                    <td>Gabriel Alves Moreira</td>
+                    <td>Análise e Desenvolvimento de Sistemas</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>R280985</td>
+                    <td>Maciel Costa da Silva</td>
+                    <td>Análise e Desenvolvimento de Sistemas</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>H719CD3</td>
+                    <td>Maycon Douglas Inácio Silva</td>
+                    <td>Análise e Desenvolvimento de Sistemas</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="no-indent"><em>Turma: DS4A48</em></p>
+        <p class="no-indent"><em>Grupo composto por 3 alunos do mesmo campus, responsáveis pela pesquisa, redação, desenvolvimento, publicação e divulgação da obra.</em></p>
+
+        <h3>Período</h3>
+        <p>Ano: 2026 | Semestre: 4º</p>
+
+        <h3>Área Temática e Projeto</h3>
+        <p>TECNOLOGIA E PRODUÇÃO &middot; Desenvolvimento de aplicativos/software/website para a comunidade.</p>
+
+        <h3>Ação</h3>
+        <p>Ebook (50 horas)</p>
+
+        <h3>Organização Parceira e Público Beneficiário</h3>
+        <table class="table-dados">
+            <tr><td>Organização Parceira</td><td><span class="pendente">informar a escola, biblioteca, curso técnico ou coletivo atendido</span></td></tr>
+            <tr><td>Público Beneficiário</td><td>Estudantes do ensino médio e técnico, ingressantes em cursos de tecnologia e comunidade externa interessada em história e desenvolvimento de jogos</td></tr>
+        </table>
+    </section>
+
+    <section class="page" id="descricao-1">
+        <div class="page-number">4</div>
+        <h2>2. Descrição da Atividade</h2>
+        <h3>2.1 Descrição Geral da Atividade</h3>
+        <p>A presente atividade de extensão universitária consistiu na pesquisa, redação e
+        desenvolvimento editorial do e-book <strong>&quot;A Evolução dos Games: a história do
+        videogame contada pela série GTA&quot;</strong>, obra digital de 14 folhas em formato A4,
+        organizada em 11 capítulos e cerca de 2.700 palavras, publicada gratuitamente na
+        internet para uso educacional.</p>
+
+        <p>O problema que a obra endereça é o acesso a conhecimento técnico organizado. A
+        história da computação aplicada ao entretenimento costuma chegar ao público em duas
+        formas igualmente limitadas: a matéria de expectativa, que trata anúncio comercial como
+        fato consumado, e o material técnico fechado em vocabulário inacessível a quem ainda não
+        é da área. O e-book adota uma terceira via: usar uma única franquia conhecida do público
+        como régua para medir três décadas de evolução técnica, explicando cada salto de
+        engenharia pelo problema concreto que ele resolveu.</p>
+
+        <h4>Estrutura do conteúdo</h4>
+        <p>A obra percorre o período de 1997 a 2026 em ordem cronológica. Cada capítulo está
+        ancorado em um marco técnico verificável e trata um conceito de computação específico,
+        conforme apresentado no Quadro 1.</p>
+    </section>
+
+    <section class="page" id="descricao-2">
+        <div class="page-number">5</div>
+        <h2>2. Descrição da Atividade (continuação)</h2>
+        <p class="figure-title">Quadro 1 – Capítulos do e-book e conceitos de computação tratados</p>
+        <table class="table-conteudo">
+            <thead>
+                <tr><th>Capítulo</th><th>Recorte</th><th>Conceito tratado</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>01 — Vista de Cima</td><td>GTA 1 e 2 · 1997–1999</td><td>Restrição de memória como condicionante de design; mundo aberto sem 3D</td></tr>
+                <tr><td>02 — Liberty City</td><td>GTA III · 2001</td><td>Renderização em terceira pessoa; mapa contínuo sem carregamento</td></tr>
+                <tr><td>03 — Neon</td><td>Vice City · 2002</td><td>Direção de arte e licenciamento sobre a mesma base técnica</td></tr>
+                <tr><td>04 — Escala</td><td>San Andreas · 2004</td><td>Mundo aberto extenso em hardware de 32 MB de memória</td></tr>
+                <tr><td>05 — A Linha de Fogo</td><td>2005–2011</td><td>Classificação etária, autorregulação e jurisprudência</td></tr>
+                <tr><td>06 — O Peso do Real</td><td>GTA IV · 2008</td><td>Física procedural em tempo real versus animação pré-gravada</td></tr>
+                <tr><td>07 — Três Protagonistas</td><td>GTA V · 2013</td><td>Troca de personagem; software como serviço</td></tr>
+                <tr><td>08 — O Custo Bilionário</td><td>Indústria</td><td>Ciclos de desenvolvimento, orçamento, crunch e monetização</td></tr>
+                <tr><td>09 — Leonida</td><td>GTA VI · 2026</td><td>Iluminação global, simulação de multidões e sistemas emergentes</td></tr>
+                <tr><td>10 — Horizonte</td><td>Prospectivo</td><td>Computação em nuvem, latência, realidade virtual e IA generativa</td></tr>
+                <tr><td>11 — Dossiê</td><td>Referências</td><td>Nove fontes primárias com link para verificação</td></tr>
+            </tbody>
+        </table>
+        <p class="caption">Fonte: Elaborado pelos autores (2026).</p>
+    </section>
+
+    <section class="page" id="descricao-3">
+        <div class="page-number">6</div>
+        <h2>2. Descrição da Atividade (continuação)</h2>
+        <p>Dois capítulos merecem destaque pelo alcance formativo:</p>
+        <ul>
+            <li><strong>Capítulo 05 — A Linha de Fogo:</strong> trata da crise regulatória de
+            2005, originada por conteúdo residual encontrado dentro dos arquivos do jogo, e da
+            decisão da Suprema Corte dos Estados Unidos em 2011 no caso <em>Brown v. Entertainment
+            Merchants Association</em>, que reconheceu videogames como expressão protegida
+            constitucionalmente. É o capítulo que conecta o curso de tecnologia a temas de ética,
+            regulação e responsabilidade profissional: o que fica esquecido dentro de um
+            repositório de código pode ter consequência jurídica e comercial.</li>
+            <li><strong>Capítulo 08 — O Custo Bilionário:</strong> apresenta ao estudante de
+            tecnologia a realidade econômica da engenharia de software de grande porte — ciclos
+            de sete a dez anos, jornadas extremas na reta final e a relação entre orçamento e
+            modelo de receita —, com o contraponto do desenvolvimento independente.</li>
+        </ul>
+
+        <h4>Rigor editorial adotado</h4>
+        <p>A obra estabelece uma regra explícita e visível ao leitor: o que é resultado medido e
+        o que é promessa de fabricante aparecem separados no texto. O capítulo sobre o título
+        ainda não lançado afirma data e plataformas — conferidas na página oficial da empresa
+        desenvolvedora, com a data da verificação registrada no rodapé da própria folha —, mas
+        classifica explicitamente as declarações de desempenho e simulação como promessa de
+        material promocional. Cada capítulo encerra com a fonte utilizada, e o capítulo final
+        reúne as nove referências com link direto, permitindo ao leitor auditar qualquer
+        afirmação.</p>
+    </section>
+
+    <section class="page" id="descricao-4">
+        <div class="page-number">7</div>
+        <h2>2. Descrição da Atividade (continuação)</h2>
+        <h4>Desenvolvimento técnico</h4>
+        <p>A peça foi construída como aplicação web estática, sem framework e sem bibliotecas de
+        terceiros; o único recurso externo carregado em tempo de execução são as duas famílias
+        tipográficas, servidas pelo Google Fonts.</p>
+        <ul>
+            <li><strong>HTML5 semântico:</strong> 675 linhas, com hierarquia de títulos sem saltos
+            e rótulos de acessibilidade em todas as folhas.</li>
+            <li><strong>CSS modular em arquitetura SMACSS:</strong> 1.407 linhas em 11 arquivos,
+            sendo nove módulos separados por responsabilidade, o arquivo central de importação e
+            o do cenário ilustrado.</li>
+            <li><strong>JavaScript sem bibliotecas:</strong> 105 linhas em funções de
+            responsabilidade única — exportação para PDF, destaque do capítulo em leitura e
+            auditoria automática de paginação.</li>
+            <li><strong>Peso total de 98,3 KB</strong> em HTML, CSS e JavaScript. Toda a ilustração
+            é desenhada em CSS e SVG embutido, sem nenhuma imagem externa, para que a obra abra
+            rápido em conexão lenta e em aparelho modesto.</li>
+        </ul>
+
+        <h4>Acessibilidade e impressão</h4>
+        <p>A obra foi submetida a auditoria automatizada de contraste segundo o critério WCAG
+        2.1 nível AA, executada no navegador com as fontes já carregadas: 321 elementos de texto
+        foram medidos contra o fundo efetivo de cada um, sem nenhuma falha, com margem mínima de
+        4,78:1 sobre o mínimo exigido de 4,5:1. Somam-se foco visível para navegação por
+        teclado e respeito à preferência de movimento reduzido do sistema operacional.</p>
+        <p>Para distribuição impressa, a obra reproduz o formato A4 exato, com verificação
+        embutida: um auditor de paginação alerta sempre que o conteúdo de uma folha ultrapassa o
+        limite da página e seria cortado na exportação para PDF, garantindo que a versão
+        impressa seja fiel à digital.</p>
+
+        <h4>Divulgação</h4>
+        <p>Além da publicação em acesso aberto, a obra foi divulgada pelos autores no LinkedIn,
+        rede profissional em que se concentra o público de estudantes e profissionais de
+        tecnologia, com link direto para a leitura gratuita. A publicação usa a imagem de
+        compartilhamento própria do e-book, dimensionada no padrão exigido pela rede
+        (1200 × 630 pixels). <span class="pendente">Informar a data da publicação.</span></p>
+    </section>
+
+    <section class="page" id="participacao">
+        <div class="page-number">8</div>
+        <h2>2.2 Descrição da Participação de Cada Aluno</h2>
+        <p class="no-indent"><span class="pendente">Conferir e ajustar à divisão real de tarefas antes de submeter.</span></p>
+
+        <h4>Gabriel Alves Moreira (R.A. H67HJ4)</h4>
+        <p>Atuou na <strong>pesquisa histórica, curadoria de fontes primárias e redação
+        didática</strong>, aplicando conhecimentos das disciplinas de <em>Metodologia
+        Científica</em>, <em>Comunicação e Expressão</em> e <em>Ética e Legislação
+        Profissional</em>. Foi responsável por levantar e verificar as nove referências que
+        sustentam a obra, estabelecer a regra editorial que separa dado medido de promessa
+        comercial, redigir o capítulo sobre classificação etária e jurisprudência e adequar a
+        linguagem técnica a um público que ainda não cursa tecnologia, preservando a precisão dos
+        conceitos.</p>
+
+        <h4>Maciel Costa da Silva (R.A. R280985)</h4>
+        <p>Atuou na <strong>revisão editorial, adequação às diretrizes de extensão e planejamento
+        da divulgação</strong>, aplicando conhecimentos das disciplinas de <em>Comunicação e
+        Expressão</em>, <em>Metodologia Científica</em> e <em>Interface Homem-Computador</em>. Foi
+        responsável por revisar a clareza dos capítulos para o público não técnico, verificar a
+        consonância da obra com os critérios de impacto comunitário da UNIP e estruturar a
+        divulgação no LinkedIn, incluindo o texto da publicação e o acompanhamento das
+        estatísticas de alcance registradas neste relatório.</p>
+
+        <h4>Maycon Douglas Inácio Silva (R.A. H719CD3)</h4>
+        <p>Atuou no <strong>desenvolvimento front-end, arquitetura de estilos, acessibilidade e
+        publicação</strong>, aplicando conhecimentos das disciplinas de <em>Programação Web</em>,
+        <em>Interface Homem-Computador</em> e <em>Engenharia de Software</em>. Foi responsável por
+        estruturar o CSS em arquitetura modular, implementar o sistema de temas em que a cor de
+        cada capítulo se propaga por uma única variável, codificar o suporte nativo a impressão
+        A4 e o auditor automático de paginação — reproduzidos na íntegra no Anexo A deste
+        relatório —, conduzir a auditoria de contraste WCAG AA e publicar a obra em servidor de
+        acesso público com versionamento aberto.</p>
+    </section>
+
+    <section class="page" id="conclusao">
+        <div class="page-number">9</div>
+        <h2>3. Conclusão e Resultados Alcançados</h2>
+        <p>A atividade entregou à comunidade uma obra de referência sobre história da computação
+        aplicada ao entretenimento, gratuita, sem anúncios, sem rastreadores e sem exigência de
+        cadastro, acessível por navegador em qualquer aparelho e disponível também para impressão
+        em A4 para distribuição física.</p>
+
+        <p>A atividade atendeu diretamente <span class="pendente">informar o número de pessoas atendidas presencialmente e onde</span>.
+        A divulgação no LinkedIn ampliou o alcance da obra para além desse público, registrando
+        <span class="pendente">impressões e reações da publicação, conforme as estatísticas do LinkedIn na data de fechamento do relatório</span>.</p>
+
+        <p class="no-indent">Resultados objetivos e verificáveis:</p>
+        <ul>
+            <li><strong>11 capítulos e 14 folhas A4</strong> publicados e acessíveis por endereço permanente.</li>
+            <li><strong>Nove fontes primárias</strong> com link direto, permitindo ao leitor auditar cada afirmação.</li>
+            <li><strong>Conformidade de contraste WCAG 2.1 AA</strong> verificada por medição automatizada em 321 elementos de texto, sem falhas.</li>
+            <li><strong>98,3 KB de peso total</strong>, sem imagens externas, para conexões lentas e aparelhos de baixo desempenho.</li>
+            <li><strong>Código-fonte aberto</strong>, permitindo que a obra seja reaproveitada, corrigida ou traduzida por terceiros.</li>
+        </ul>
+
+        <p class="no-indent">A atividade está alinhada aos seguintes <strong>Objetivos de
+        Desenvolvimento Sustentável (ODS) da ONU</strong>:</p>
+        <ul>
+            <li><strong>ODS 4 (Educação de Qualidade):</strong> material didático gratuito sobre evolução tecnológica, com fontes verificáveis e linguagem acessível.</li>
+            <li><strong>ODS 9 (Indústria, Inovação e Infraestrutura):</strong> documentação de três décadas de inovação em engenharia de software.</li>
+            <li><strong>ODS 10 (Redução das Desigualdades):</strong> acesso irrestrito, sem custo nem cadastro, com acessibilidade e peso reduzido.</li>
+        </ul>
+    </section>
+
+    <section class="page" id="conclusao-2">
+        <div class="page-number">10</div>
+        <h2>3. Conclusão e Resultados Alcançados (continuação)</h2>
+
+        <h3>3.1 Local onde a atividade foi realizada</h3>
+        <p>A obra foi desenvolvida pelos alunos e publicada em servidor de acesso público, com
+        leitura disponível em qualquer dispositivo com navegador, e divulgada no LinkedIn.
+        <span class="pendente">Informar o local e a data da apresentação ou distribuição presencial — as Orientações da UNIP (p. 6) exigem que a atividade seja realizada presencialmente.</span></p>
+
+        <h3>3.2 Considerações Finais</h3>
+        <ul>
+            <li><strong>Dificuldades enfrentadas:</strong> a principal foi editorial, não técnica —
+            separar, no material disponível sobre um título ainda não lançado, o que é dado
+            confirmado pela empresa do que é leitura de vídeo promocional. A solução foi registrar a
+            data da verificação na própria folha e marcar as promessas como tais no corpo do
+            texto.</li>
+            <li><strong>Sugestões:</strong> a obra está estruturada para crescer — acrescentar um
+            capítulo exige apenas uma folha nova e um tema de cor. Recomenda-se revisar anualmente
+            as afirmações sobre títulos não lançados e reconferir os links do capítulo de
+            referências.</li>
+            <li><strong>Observações:</strong> a decisão de não usar nenhuma imagem externa,
+            desenhando toda a ilustração em CSS e SVG, não foi estética: foi o que permitiu manter a
+            obra inteira abaixo de 100 KB, o que importa diretamente para o público que se pretende
+            alcançar.</li>
+        </ul>
+    </section>
+
+    <section class="page" id="comprovacao">
+        <div class="page-number">11</div>
+        <h2>4. Comprovação</h2>
+        <p>A comprovação da atividade fundamenta-se na própria peça produzida, reproduzida na
+        íntegra no <strong>Anexo A</strong> a partir da folha 14, na obra publicada em
+        acesso aberto, na publicação de divulgação no LinkedIn e nas capturas apresentadas a
+        seguir.</p>
+        <p class="no-indent">O anexo reproduz a peça como ela é distribuída — mesma diagramação,
+        mesmo formato de impressão. Por isso as folhas do anexo não recebem o número de página do
+        relatório, que cairia sobre a arte; o sumário anuncia onde o anexo começa. Imprimir apenas
+        o intervalo do anexo devolve a peça pronta para uso. O e-book mantém, no pé de cada folha,
+        a numeração interna da própria peça.</p>
+
+        <h3>Comprovação 1 — Capa e índice do e-book</h3>
+        <p class="figure-title">Figura 1 – Capa e Seleção de Missões (índice) do e-book &quot;A Evolução dos Games&quot;</p>
+        <div class="image-container">
+            <img src="assets/1.png" alt="Capa e índice do e-book A Evolução dos Games" class="dynamic-img"
+                 title="Clique para trocar a imagem (JPG, PNG, WEBP)">
+            <p class="caption">Fonte: Acervo dos autores (2026) — reprodução da peça produzida na atividade.</p>
+        </div>
+    </section>
+
+    <section class="page" id="comprovacao-2">
+        <div class="page-number">12</div>
+        <h2>4. Comprovação (continuação)</h2>
+
+        <h3>Comprovação 2 — Visão geral das 14 folhas</h3>
+        <p class="figure-title">Figura 2 – As 14 folhas do e-book, cada capítulo com seu tema de cor</p>
+        <div class="image-container">
+            <img src="assets/2.png" alt="Miniaturas das 14 folhas do e-book" class="dynamic-img"
+                 title="Clique para trocar a imagem (JPG, PNG, WEBP)">
+            <p class="caption">Fonte: Acervo dos autores (2026) — reprodução da peça produzida na atividade.</p>
+        </div>
+    </section>
+
+    <section class="page" id="comprovacao-3">
+        <div class="page-number">13</div>
+        <h2>4. Comprovação (continuação)</h2>
+
+        <h3>Comprovação 3 — Publicação de divulgação no LinkedIn</h3>
+        <p class="figure-title">Figura 3 – Publicação do e-book &quot;A Evolução dos Games&quot; no LinkedIn</p>
+        <div class="image-container">
+            <img src="assets/3.png" alt="Captura da publicação de divulgação do e-book no LinkedIn" class="dynamic-img"
+                 title="Clique para anexar a captura da publicação (JPG, PNG, WEBP)">
+            <p class="caption">Fonte: Acervo dos autores (2026) — captura da publicação no LinkedIn.</p>
+        </div>
+        <p class="no-indent"><span class="pendente">Anexar a captura da publicação: clicar na imagem acima e escolher o arquivo, ou salvá-lo como assets/3.png.</span></p>
+
+        <h3>Demais evidências</h3>
+        <ul>
+            <li><strong>Obra publicada:</strong> maycondis.github.io/E-book-A_Evolucao_dos_Games/ebook.html</li>
+            <li><strong>Código-fonte com histórico de versões:</strong> github.com/MayconDIS/E-book-A_Evolucao_dos_Games</li>
+            <li><strong>Publicação no LinkedIn:</strong> <span class="pendente">colar o link da publicação</span></li>
+            <li><strong>Registro da ação presencial:</strong> <span class="pendente">anexar lista de presença e registro fotográfico</span></li>
+            <li><strong>Carta de Apresentação institucional:</strong> <span class="pendente">anexar, se a atividade foi realizada junto a organização parceira</span></li>
+        </ul>
+    </section>
+
+
+    <!-- ═════════════ ANEXO A — O E-BOOK NA ÍNTEGRA ═════════════
+         Folhas 14 a 27. Reproduzem a peça como ela é distribuída, e por
+         isso NÃO levam o número de página do relatório: ele cairia sobre a arte.
+         O sumário anuncia onde o anexo começa. -->
+    <div class="anexo anexo-a" id="anexo-a">
+<article class="page peca-a sheet cover-sheet" aria-labelledby="cover-title">
+            <div class="cover-grid">
+
+                <div class="cell cell-sunset span-2"></div>
+
+                <div class="cell cell-wanted" aria-hidden="true">
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                </div>
+
+                <div class="cell cell-title span-3">
+                    <p class="cover-kicker">1997 &ndash; 2026</p>
+                    <h1 id="cover-title" class="cover-title">A Evolução<br>dos Games</h1>
+                    <p class="cover-sub">A história do videogame contada pela série GTA</p>
+                </div>
+
+                <div class="cell cell-grid"></div>
+
+                <div class="cell cell-palms" aria-hidden="true"></div>
+
+                <div class="cell cell-money" aria-hidden="true"><span>$</span></div>
+
+                <div class="cell cell-author span-2">
+                    <span class="label">Escrito por</span>
+                    <span class="name">Gabriel Alves Moreira</span>
+                    <span class="ra">R.A. H67HJ4</span>
+                    <span class="name">Maciel Costa da Silva</span>
+                    <span class="ra">R.A. R280985</span>
+                    <span class="name">Maycon Douglas Inácio Silva</span>
+                    <span class="ra">R.A. H719CD3</span>
+                </div>
+
+                <div class="cell cell-skyline"></div>
+
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-neutral" aria-labelledby="index-title">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Índice</p>
+                        <h2 id="index-title">Seleção de Missões</h2>
+                        <span class="mission-objective">atravessar três décadas de tecnologia usando uma única série como régua</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">00</span>
+                </header>
+
+                <p>Nenhuma outra franquia atravessou tantas gerações de hardware sem sair do lugar de referência. Por isso a série <strong>Grand Theft Auto</strong> funciona como linha do tempo: cada episódio marca um limite técnico sendo rompido — e um preço sendo pago por isso.</p>
+
+                <ul class="mission-select">
+                    <li><a href="#m1">Vista de Cima</a><span class="pick-note">GTA 1 e 2 &middot; 1997</span></li>
+                    <li><a href="#m2">Liberty City</a><span class="pick-note">GTA III &middot; 2001</span></li>
+                    <li><a href="#m3">Neon</a><span class="pick-note">Vice City &middot; 2002</span></li>
+                    <li><a href="#m4">Escala</a><span class="pick-note">San Andreas &middot; 2004</span></li>
+                    <li><a href="#m5">A Linha de Fogo</a><span class="pick-note">Controvérsia &middot; 2005</span></li>
+                    <li><a href="#m6">O Peso do Real</a><span class="pick-note">GTA IV &middot; 2008</span></li>
+                    <li><a href="#m7">Três Protagonistas</a><span class="pick-note">GTA V &middot; 2013</span></li>
+                    <li><a href="#m8">O Custo Bilionário</a><span class="pick-note">Procurado</span></li>
+                    <li><a href="#m9">Leonida</a><span class="pick-note">GTA VI &middot; 2026</span></li>
+                    <li><a href="#m10">Horizonte</a><span class="pick-note">Bônus</span></li>
+                    <li><a href="#m11">Dossiê</a><span class="pick-note">Fontes</span></li>
+                </ul>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Cada missão fecha com a fonte usada. O que é dado verificado e o que é promessa de fabricante está separado no texto.</p>
+                    <span class="hud-page">00</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-topdown" aria-labelledby="m1">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 01 &middot; GTA 1 e GTA 2 &middot; 1997&ndash;1999</p>
+                        <h2 id="m1">Vista de Cima</h2>
+                        <span class="mission-objective">provar que mundo aberto é uma decisão de design, não um efeito do 3D</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">01</span>
+                </header>
+
+                <p class="lede">Antes de qualquer polígono, a ideia já estava pronta. O <strong>GTA</strong> original, lançado em 1997 pela <strong>DMA Design</strong>, era visto <span class="tag">de cima</span>, com carros e pedestres do tamanho de formigas. Mesmo assim entregava o que definiria o gênero: uma cidade inteira aberta, sem corredor, onde a missão era uma opção e não uma obrigação.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Briefing</span>
+                    <p>Já no primeiro jogo existiam três cidades — <strong>Liberty City</strong>, <strong>San Andreas</strong> e <strong>Vice City</strong>. Os nomes que a série passaria as duas décadas seguintes reconstruindo em 3D estavam todos ali, desenhados em sprites.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que a vista de cima permitia</h3>
+                        <ul>
+                            <li><strong>Cidade inteira na memória:</strong> sem cálculo de perspectiva, cabia mais mapa em menos hardware.</li>
+                            <li><strong>Liberdade real:</strong> ignorar a missão e sair dirigindo já era uma forma legítima de jogar.</li>
+                            <li><strong>Leitura instantânea:</strong> de cima, o jogador enxerga a rota inteira antes de decidir.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que ficava de fora</h3>
+                        <ul>
+                            <li><strong>Sem imersão:</strong> olhar a cidade de cima é ler um mapa, não habitar um lugar.</li>
+                            <li><strong>Personagem mudo:</strong> sem rosto nem voz, não havia como sustentar um drama.</li>
+                            <li><strong>Reputação polêmica:</strong> a série virou pauta de imprensa antes de virar pauta técnica.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">O conceito estava provado e o hardware, prestes a alcançá-lo. Faltava girar a câmera noventa graus.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Material histórico da DMA Design/Rockstar e documentação da série (GTA 1, 1997; GTA 2, 1999).</p>
+                    <span class="hud-page">01</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-liberty" aria-labelledby="m2">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 02 &middot; GTA III &middot; 2001</p>
+                        <h2 id="m2">Liberty City</h2>
+                        <span class="mission-objective">entender por que 2001 dividiu a indústria em antes e depois</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">02</span>
+                </header>
+
+                <p class="lede">Poucos jogos mudaram tanto o que se esperava de um videogame. <strong>GTA III</strong> pegou a cidade vista de cima e colocou o jogador dentro dela, em terceira pessoa, num mapa contínuo <span class="tag">sem tela de carregamento entre bairros</span>. Durante anos, "clone de GTA" virou o nome informal de um gênero inteiro.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Inteligência</span>
+                    <p>O rádio do carro foi a invenção mais subestimada. Estações com locutores e comerciais falsos transformaram tempo de deslocamento — historicamente o momento morto de qualquer jogo — na parte que as pessoas mais lembram.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que a terceira dimensão trouxe</h3>
+                        <ul>
+                            <li><strong>Cidade habitável:</strong> trânsito, polícia e pedestres produzindo histórias que ninguém roteirizou.</li>
+                            <li><strong>Linguagem de cinema:</strong> câmera, dublagem e cutscene entram no vocabulário da série.</li>
+                            <li><strong>Mapa sem costura:</strong> a ilusão de continuidade passou a valer mais que o detalhe.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que passou a custar caro</h3>
+                        <ul>
+                            <li><strong>Câmera hostil:</strong> uma geração inteira brigando com o próprio ponto de vista.</li>
+                            <li><strong>Equipes maiores:</strong> modelar e animar uma cidade multiplica o time e o prazo.</li>
+                            <li><strong>Distância de visão curta:</strong> a neblina no horizonte era limitação de hardware disfarçada de clima.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">A cidade agora era um lugar. Faltava dar a ela uma época, uma trilha sonora e um tamanho que ninguém achava possível.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">GDC Vault e documentação técnica de GTA III (motor RenderWare, PlayStation 2, 2001).</p>
+                    <span class="hud-page">02</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-neon" aria-labelledby="m3">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 03 &middot; GTA Vice City &middot; 2002</p>
+                        <h2 id="m3">Neon</h2>
+                        <span class="mission-objective">provar que ambientação vale tanto quanto capacidade de processamento</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">03</span>
+                </header>
+
+                <p class="lede">Um ano depois de GTA III, a Rockstar fez a aposta menos técnica e mais decisiva da série: em vez de mais polígonos, <span class="tag">uma época</span>. <strong>Vice City</strong> leva o jogador para a Miami de 1986 e entrega algo que nenhum avanço gráfico produz sozinho — personalidade. Rádio com sucessos licenciados dos anos 80, roupa, arquitetura e cor: tudo aponta para o mesmo lugar.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Briefing</span>
+                    <p>Pela primeira vez o protagonista tinha rosto e voz. Um elenco de dublagem profissional, com nomes vindos do cinema, puxou o roteiro para outro patamar e transformou o que era pastiche em narrativa que se sustenta sozinha.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que Vice City provou</h3>
+                        <ul>
+                            <li><strong>Trilha é mecânica:</strong> a seleção licenciada deixou de ser fundo e virou parte da direção.</li>
+                            <li><strong>Arte vence hardware:</strong> o neon marcou mais gente do que qualquer contagem de polígonos.</li>
+                            <li><strong>Propriedade e progresso:</strong> comprar imóveis deu ao jogador um objetivo além da missão seguinte.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>Os limites do truque</h3>
+                        <ul>
+                            <li><strong>Mesma base técnica:</strong> por baixo do neon, o motor ainda era o de GTA III.</li>
+                            <li><strong>Custo de licenciamento:</strong> a trilha que define o jogo depende de contratos que expiram.</li>
+                            <li><strong>Mapa contido:</strong> a cidade encanta, mas é pequena diante do que viria a seguir.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">A série tinha carisma. Dois anos depois, decidiu descobrir até onde o hardware aguentava ir.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Documentação oficial de GTA Vice City (Rockstar Games, 2002) e material de imprensa da época.</p>
+                    <span class="hud-page">03</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-desert" aria-labelledby="m4">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 04 &middot; GTA San Andreas &middot; 2004</p>
+                        <h2 id="m4">Escala</h2>
+                        <span class="mission-objective">medir a maior proeza de engenharia da geração PlayStation 2</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">04</span>
+                </header>
+
+                <p class="lede">Se Vice City foi sobre identidade, <strong>San Andreas</strong> foi sobre ambição bruta. Não uma cidade: <span class="tag">três</span> — Los Santos, San Fierro e Las Venturas — ligadas por deserto, montanha e interior, tudo dentro de um console com <strong>32 MB de memória</strong>. Foi o mundo aberto mais extenso que aquela geração viu.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Briefing</span>
+                    <p>O jogo trouxe estatísticas de RPG — resistência, massa muscular, peso, perícia com armas e direção — além de natação, pilotagem, disputa de território e personalização de roupa, cabelo e tatuagem. A série deixou de ter um avatar e passou a ter um personagem que o jogador constrói.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que a escala destravou</h3>
+                        <ul>
+                            <li><strong>Mundo com geografia:</strong> cidade, campo e deserto com regras e ritmos próprios.</li>
+                            <li><strong>Progressão pessoal:</strong> evoluir corpo e perícias fideliza mais do que qualquer missão.</li>
+                            <li><strong>Território em disputa:</strong> o mapa vira tabuleiro, não só cenário de passagem.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que a escala cobrou</h3>
+                        <ul>
+                            <li><strong>Densidade irregular:</strong> quanto maior o mapa, mais vazio entre uma coisa boa e a próxima.</li>
+                            <li><strong>Sistemas competindo:</strong> estatísticas demais diluem o foco do que o jogo é.</li>
+                            <li><strong>Hardware no limite:</strong> a proeza técnica cobrou seu preço em estabilidade.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">O jogo era o maior da geração — e, no ano seguinte, viraria o caso judicial mais importante da história do meio.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Documentação oficial de GTA San Andreas (Rockstar Games, 2004); especificações técnicas do PlayStation 2.</p>
+                    <span class="hud-page">04</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-press press-sheet" aria-labelledby="m5">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 05 &middot; A controvérsia &middot; 2005&ndash;2011</p>
+                        <h2 id="m5">A Linha de Fogo</h2>
+                        <span class="mission-objective">entender como a série virou ré e saiu do tribunal com o meio inteiro protegido</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">05</span>
+                </header>
+
+                <p class="lede">Nenhuma franquia foi tão processada, tão debatida em plenário e tão usada como exemplo do que havia de errado com os videogames. Em 2005, um conteúdo desativado dentro dos arquivos de San Andreas foi reativado por modificadores da comunidade — o episódio ficou conhecido como <span class="tag">Hot Coffee</span> — e detonou a maior crise regulatória que o meio já enfrentou.</p>
+
+                <ol class="objectives">
+                    <li><strong>A reclassificação.</strong> O órgão americano de classificação reavaliou o jogo de "Maduro" para "Apenas Adultos", faixa que as grandes redes varejistas simplesmente não vendem. Na prática, o título saiu das prateleiras.</li>
+                    <li><strong>A recolha.</strong> A publicadora recolheu o estoque e relançou uma versão editada para recuperar a classificação anterior — prejuízo direto e uma lição sobre o que fica esquecido dentro do código.</li>
+                    <li><strong>A escalada política.</strong> Ações judiciais e projetos de lei tentaram proibir a venda de jogos violentos a menores em vários estados americanos.</li>
+                    <li><strong>O desfecho.</strong> Em 2011, a Suprema Corte dos Estados Unidos decidiu que videogames são expressão protegida pela Primeira Emenda, como livros e filmes. A tentativa de censura acabou virando a garantia jurídica do meio.</li>
+                </ol>
+
+                <aside class="briefing is-alert">
+                    <span class="briefing-label">O que ficou</span>
+                    <p>A indústria saiu do episódio apostando em autorregulação. Os sistemas de classificação etária — ESRB nos Estados Unidos, PEGI na Europa e ClassInd no Brasil — ganharam o peso que têm hoje justamente porque a alternativa era a regulação imposta de fora.</p>
+                </aside>
+
+                <p class="cliffhanger">Legitimado como linguagem, o meio pôde encarar temas adultos a sério. Foi exatamente o que a geração seguinte tentou fazer.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Decisão da Suprema Corte dos EUA em <em>Brown v. Entertainment Merchants Association</em> (2011); histórico de classificação do ESRB.</p>
+                    <span class="hud-page">05</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-realism" aria-labelledby="m4">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 06 &middot; GTA IV &middot; 2008</p>
+                        <h2 id="m6">O Peso do Real</h2>
+                        <span class="mission-objective">medir o que a série ganhou e perdeu ao levar o realismo a sério</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">06</span>
+                </header>
+
+                <p class="lede">A chegada da alta definição virou a mesa. Com o motor <strong>RAGE</strong> e a física procedural do <strong>Euphoria</strong>, <strong>GTA IV</strong> trocou a leveza caricata por <span class="tag">massa e inércia</span>: carros com suspensão, corpos que tropeçam e se apoiam em vez de repetir a mesma animação de queda. Foi a primeira vez que o mundo reagiu como matéria, não como script.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Inteligência</span>
+                    <p>O Euphoria simula o corpo em tempo real: o personagem decide como cair conforme a direção do impacto. Nenhuma dessas quedas está gravada — é por isso que duas batidas iguais nunca terminam iguais.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O que o realismo entregou</h3>
+                        <ul>
+                            <li><strong>Física sistêmica:</strong> reações calculadas na hora, não animações pré-gravadas.</li>
+                            <li><strong>Cidade densa:</strong> menos quilômetros e mais detalhe por quarteirão.</li>
+                            <li><strong>Narrativa adulta:</strong> um protagonista imigrante e endividado, longe da caricatura.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que ele tirou</h3>
+                        <ul>
+                            <li><strong>Peso vira atrito:</strong> dirigir ficou exigente, e parte do público sentiu falta da leveza.</li>
+                            <li><strong>Paleta lavada:</strong> o cinza documental custou a identidade visual colorida da série.</li>
+                            <li><strong>Custo em outro patamar:</strong> a era HD multiplicou o preço de cada metro quadrado de cidade.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Restava resolver o impasse: como ter o peso de IV e o carisma de San Andreas no mesmo jogo?</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Documentação do motor RAGE (Rockstar) e da tecnologia Euphoria (NaturalMotion); análises técnicas de GTA IV.</p>
+                    <span class="hud-page">06</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-phenomenon" aria-labelledby="m5">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 07 &middot; GTA V e GTA Online &middot; 2013</p>
+                        <h2 id="m7">Três Protagonistas</h2>
+                        <span class="mission-objective">explicar como um jogo de 2013 continuou vendendo por mais de dez anos</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">07</span>
+                </header>
+
+                <p class="lede">A resposta ao impasse foi estrutural: <strong>três protagonistas jogáveis</strong>. Michael, Franklin e Trevor podem ser trocados quase a qualquer momento, e cada um resolve um problema de design — o drama familiar, a ascensão social e o caos puro. O golpe planejado, executado em equipe, virou a assinatura do jogo.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Briefing</span>
+                    <p>O lançamento arrecadou cerca de <span class="money">US$ 800 milhões em 24 horas</span> e ultrapassou <span class="money">US$ 1 bilhão em três dias</span>. Mas o número que mudou a indústria veio depois: <strong>GTA Online</strong>, publicado semanas após o jogo, seguiu recebendo conteúdo por mais de uma década.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O acerto</h3>
+                        <ul>
+                            <li><strong>Troca de personagem:</strong> três pontos de vista sobre a mesma cidade, sem repetir estrutura.</li>
+                            <li><strong>Golpes em equipe:</strong> preparação, escolha de abordagem e execução como mecânica central.</li>
+                            <li><strong>Sobrevida rara:</strong> relançado por três gerações de console sem perder público.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>A conta que veio junto</h3>
+                        <ul>
+                            <li><strong>Modo história parado:</strong> o online absorveu o time, e a campanha quase não recebeu expansão.</li>
+                            <li><strong>Economia inflacionada:</strong> preços internos altos empurram o jogador para a moeda comprada.</li>
+                            <li><strong>Espera de uma década:</strong> o sucesso do online ajudou a adiar o próximo capítulo.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Um jogo virou serviço, e o serviço virou o negócio. Isso tem um preço — e ele aparece na próxima folha.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Comunicados da Take-Two Interactive sobre o lançamento de GTA V (2013) e balanços públicos posteriores.</p>
+                    <span class="hud-page">07</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-wanted" aria-labelledby="m6">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Nível de Procurado</p>
+                        <h2 id="m8">O Custo Bilionário</h2>
+                        <span class="mission-objective">encarar a conta que o modelo de superprodução deixou para a indústria</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">08</span>
+                </header>
+
+                <p class="lede">Entre GTA III e GTA VI, o intervalo entre lançamentos saiu de dois anos para mais de dez. Não é preguiça: é aritmética. Um mundo aberto de ponta hoje custa <span class="money">centenas de milhões de dólares</span> e ocupa centenas de pessoas por quase uma década.</p>
+
+                <div class="wanted" role="img" aria-label="Nível de procurado: quatro de cinco estrelas">
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star"></span>
+                    <span class="wanted-star is-empty"></span>
+                    <span class="wanted-label">Risco estrutural</span>
+                </div>
+
+                <ol class="objectives">
+                    <li><strong>Aposta binária.</strong> Com ciclos de sete a dez anos, o estúdio aposta o próprio futuro numa leitura de mercado feita uma década antes de o jogo chegar às lojas.</li>
+                    <li><strong>Crunch estrutural.</strong> Jornadas extremas na reta final seguem aparecendo, ano após ano, nas pesquisas feitas com os próprios desenvolvedores.</li>
+                    <li><strong>Demissões em massa.</strong> Entre 2023 e 2024, milhares de profissionais foram desligados no setor — inclusive em anos de receita recorde.</li>
+                    <li><strong>O contraponto indie.</strong> Enquanto isso, obras de uma só pessoa como <em>Stardew Valley</em> e <em>Balatro</em> viraram fenômenos. O risco criativo migrou para quem tem pouco a perder.</li>
+                </ol>
+
+                <aside class="briefing is-alert">
+                    <span class="briefing-label">Alerta</span>
+                    <p>Gráfico melhor não é jogo melhor. Os orçamentos cresceram em ordem de grandeza nos últimos quinze anos enquanto o preço de capa subiu pouco — e é essa diferença que a loja interna foi chamada para cobrir.</p>
+                </aside>
+
+                <p class="cliffhanger">É com essa conta em aberto que a série chega ao seu capítulo mais caro.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">GDC &ldquo;State of the Game Industry&rdquo;; balanços públicos de publishers (2023&ndash;2025); dados de vendas divulgados pelos estúdios.</p>
+                    <span class="hud-page">08</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-leonida" aria-labelledby="m7">
+            <div class="panel">
+                <div class="gta-badge">VICE CITY ULTIMATE</div>
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão 09 &middot; GTA VI &middot; 2026</p>
+                        <h2 id="m9">Leonida</h2>
+                        <span class="mission-objective">separar o que a Rockstar confirmou do que ainda é leitura de trailer</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">09</span>
+                </header>
+
+                <p class="lede">Treze anos depois de GTA V, a série volta a Vice City — agora dentro do estado fictício de <strong>Leonida</strong>. <strong>Grand Theft Auto VI</strong> chega em <span class="tag">19 de novembro de 2026</span>, e vale a ressalva que quase nenhuma matéria faz: tudo o que se afirma sobre desempenho e simulação vem de trailers e da própria Rockstar. É promessa anunciada, ainda não é resultado medido.</p>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Confirmado pela Rockstar</span>
+                    <p>Lançamento em <strong>19/11/2026</strong>, exclusivo para <strong>PlayStation 5</strong> e <strong>Xbox Series X|S</strong>. Dois protagonistas jogáveis — <strong>Jason</strong> e <strong>Lucia</strong>, a primeira protagonista feminina da série principal. Fora isso, o que circula ainda é interpretação de vídeo.</p>
+                </aside>
+
+                <div class="ledger">
+                    <section class="ledger-col is-gain">
+                        <h3>O salto prometido</h3>
+                        <ul>
+                            <li><strong>Multidões reativas:</strong> NPCs com rotina própria, reagindo ao clima e ao jogador.</li>
+                            <li><strong>Iluminação global:</strong> ray tracing em vegetação densa, água e reflexo urbano.</li>
+                            <li><strong>Mundo dirigido por sistemas:</strong> o ambiente responde de forma imprevisível.</li>
+                            <li><strong>Dupla de protagonistas:</strong> a estrutura de V revista para dois pontos de vista.</li>
+                        </ul>
+                    </section>
+                    <section class="ledger-col is-risk">
+                        <h3>O que isso custa</h3>
+                        <ul>
+                            <li><strong>Barreira de hardware:</strong> só PS5 e Xbox Series X|S; sem versão de PC no lançamento.</li>
+                            <li><strong>Ciclo de uma década:</strong> orçamento bilionário e dois adiamentos públicos.</li>
+                            <li><strong>Herança do online:</strong> o modelo de serviço de V pressiona o design do modo história.</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <p class="cliffhanger">Se este é o ápice do mundo aberto como o conhecemos, o que sobra para a geração seguinte inventar?</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Rockstar Games, página oficial de GTA VI — data e plataformas conferidas na fonte em 15/09/2026.</p>
+                    <span class="hud-page">09</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-horizon" aria-labelledby="m8">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Missão Bônus &middot; Depois de Leonida</p>
+                        <h2 id="m10">Horizonte</h2>
+                        <span class="mission-objective">mapear as três frentes que disputam o próximo salto</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">10</span>
+                </header>
+
+                <p class="lede">O próximo salto provavelmente não será gráfico. Com o fotorrealismo praticamente resolvido, a fronteira passou a ser <span class="tag">onde o jogo roda</span> e quão vivo ele é. Três forças disputam esse horizonte, e cada uma chega com o próprio gargalo.</p>
+
+                <ol class="objectives">
+                    <li><strong>Streaming universal.</strong> O processamento migra para o servidor e o blockbuster passa a rodar em celular e Smart TV. O gargalo deixa de ser a placa de vídeo e vira a latência da rede: poucos milissegundos separam a imersão da frustração.</li>
+                    <li><strong>Imersão corporal.</strong> VR e realidade mista trocam o controle pelo corpo. O obstáculo não é mais resolução, é ergonomia — peso, enjoo de movimento e sessões que poucos aguentam por mais de uma hora.</li>
+                    <li><strong>IA generativa em tempo real.</strong> NPCs que improvisam diálogo e missões que se reescrevem. A promessa é infinitude; o risco é conteúdo infinito e irrelevante, sem a curadoria que dá sentido a um mundo.</li>
+                </ol>
+
+                <aside class="briefing">
+                    <span class="briefing-label">Conclusão do dossiê</span>
+                    <p>A série inteira conta a mesma história: cada limite vencido — a vista de cima, a neblina no horizonte, a animação pré-gravada — devolveu um limite novo. O que mudou de 1997 a 2026 foi a potência disponível, não a natureza do problema.</p>
+                </aside>
+
+                <p class="cliffhanger">É a restrição, e não a potência, que sempre definiu o que é um bom jogo. Nenhuma tecnologia nova mudou isso — e a próxima também não vai.</p>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Documentação técnica de Xbox Cloud Gaming e NVIDIA RTX; Steam Hardware Survey.</p>
+                    <span class="hud-page">10</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-dossier dossier-sheet" aria-labelledby="m9">
+            <div class="panel">
+                <header class="mission-head">
+                    <div>
+                        <p class="eyebrow">Arquivo</p>
+                        <h2 id="m11">Dossiê</h2>
+                        <span class="mission-objective">conferir na fonte tudo o que foi afirmado aqui</span>
+                    </div>
+                    <span class="mission-id" aria-hidden="true">11</span>
+                </header>
+
+                <ul class="sources">
+                    <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">
+                        <span class="source-name">Rockstar Games &mdash; GTA VI</span>
+                        <span class="source-note">Site oficial: data de lançamento, plataformas e trailers de Leonida.</span></a></li>
+                    <li><a href="https://www.rockstargames.com/games" target="_blank" rel="noopener">
+                        <span class="source-name">Rockstar Games &mdash; Catálogo</span>
+                        <span class="source-note">Fichas oficiais de cada título da série, de GTA III a GTA V.</span></a></li>
+                    <li><a href="https://www.take2games.com/ir" target="_blank" rel="noopener">
+                        <span class="source-name">Take-Two &mdash; Relações com Investidores</span>
+                        <span class="source-note">Origem dos números de lançamento e vendas citados na Missão 05.</span></a></li>
+                    <li><a href="https://www.naturalmotion.com/" target="_blank" rel="noopener">
+                        <span class="source-name">NaturalMotion &mdash; Euphoria</span>
+                        <span class="source-note">A tecnologia de física procedural que define o peso de GTA IV.</span></a></li>
+                    <li><a href="https://gdcvault.com/" target="_blank" rel="noopener">
+                        <span class="source-name">GDC Vault</span>
+                        <span class="source-note">Postmortems dos criadores sobre a transição para o mundo aberto em 3D.</span></a></li>
+                    <li><a href="https://gdconf.com/state-of-game-industry" target="_blank" rel="noopener">
+                        <span class="source-name">GDC &mdash; State of the Game Industry</span>
+                        <span class="source-note">Pesquisa anual com dados de crunch, demissões e orçamento.</span></a></li>
+                    <li><a href="https://gamehistory.org/" target="_blank" rel="noopener">
+                        <span class="source-name">Video Game History Foundation</span>
+                        <span class="source-note">Preservação e documentação técnica das eras citadas no e-book.</span></a></li>
+                    <li><a href="https://steamdb.info/stats/releases/" target="_blank" rel="noopener">
+                        <span class="source-name">SteamDB &mdash; Lançamentos</span>
+                        <span class="source-note">Os números do mercado independente citados na folha de Procurado.</span></a></li>
+                    <li><a href="https://www.eurogamer.net/digitalfoundry" target="_blank" rel="noopener">
+                        <span class="source-name">Digital Foundry</span>
+                        <span class="source-note">Análise técnica independente de desempenho, resolução e ray tracing.</span></a></li>
+                </ul>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">Links verificados em 15/09/2026. Dados de mercado mudam rápido: reconfira antes de citar.</p>
+                    <span class="hud-page">11</span>
+                </footer>
+            </div>
+        </article>
+
+<article class="page peca-a sheet theme-gold passed-sheet" aria-labelledby="passed-title">
+            <div class="panel">
+                <div class="passed-box">
+                    <p class="passed-sub">Missão</p>
+                    <h2 id="passed-title" class="passed-title">Cumprida</h2>
+
+                    <div class="score-card">
+                        <dl>
+                            <dt>Período coberto</dt><dd>1997 — 2026</dd>
+                            <dt>Títulos da série</dt><dd>8</dd>
+                            <dt>Gerações de console</dt><dd>5</dd>
+                            <dt>Missões concluídas</dt><dd>11 / 11</dd>
+                        </dl>
+                    </div>
+
+                    <p class="passed-note">De uma cidade vista de cima em 1997 ao pôr do sol de Leonida em 2026, a série mostra o mesmo padrão em cada geração: o limite muda de lugar, nunca desaparece. O que decide se o jogo presta continua sendo a decisão de design — e essa nunca dependeu de teraflops.</p>
+                </div>
+
+                <footer class="hud-footer">
+                    <p class="hud-source">A Evolução dos Games &middot; Gabriel Alves Moreira (R.A. H67HJ4), Maciel Costa da Silva (R.A. R280985) e Maycon Douglas Inácio Silva (R.A. H719CD3) &middot; 2026</p>
+                    <span class="hud-page">Fim</span>
+                </footer>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        /* Troca de imagem por clique e fallback para placeholder: anexe as comprovações
+           e imprima na mesma sessão — a troca vive na memória da aba. */
+        const FALLBACK_SVG = 'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450"%3E%3Crect width="800" height="450" fill="%23f4f4f4" stroke="%23999" stroke-width="2" stroke-dasharray="10 6"/%3E%3Ctext x="400" y="210" font-family="Arial" font-size="26" fill="%23666" text-anchor="middle"%3EImagem da comprovação%3C/text%3E%3Ctext x="400" y="252" font-family="Arial" font-size="19" fill="%23888" text-anchor="middle"%3EClique aqui para anexar (JPG, PNG ou WEBP)%3C/text%3E%3C/svg%3E';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.dynamic-img').forEach((img) => {
+                img.addEventListener('error', function () {
+                    if (!this.dataset.hasFallback) {
+                        this.dataset.hasFallback = 'true';
+                        this.src = FALLBACK_SVG;
+                    }
+                });
+
+                const seletor = document.createElement('input');
+                seletor.type = 'file';
+                seletor.accept = 'image/png, image/jpeg, image/jpg, image/webp, image/gif';
+                seletor.style.display = 'none';
+
+                seletor.addEventListener('change', (evento) => {
+                    const arquivo = evento.target.files[0];
+                    if (!arquivo) return;
+                    const leitor = new FileReader();
+                    leitor.onload = (e) => { img.src = e.target.result; };
+                    leitor.readAsDataURL(arquivo);
+                });
+
+                img.addEventListener('click', () => seletor.click());
+                document.body.appendChild(seletor);
+            });
+        });
+    </script>
+</body>
+</html>
