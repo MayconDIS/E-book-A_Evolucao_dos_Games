@@ -7,7 +7,7 @@
 ![Arquitetura](https://img.shields.io/badge/arquitetura-SMACSS%20%7C%20Clean%20Code-orange)
 ![Licença](https://img.shields.io/badge/licença-educacional-yellow)
 
-🔗 **[Ler o e-book online](https://maycondis.github.io/E-book-A_Evolucao_dos_Games/)**
+🔗 **[Ler o e-book online](https://maycondis.github.io/E-book-A_Evolucao_dos_Games/ebook.html)**
 
 ## 📖 Sobre
 
@@ -47,17 +47,17 @@ Todo o cenário é desenhado em **CSS e SVG inline**: nenhuma imagem externa, ne
 
 ### Ler no navegador
 
-Acesse o [link do GitHub Pages](https://maycondis.github.io/E-book-A_Evolucao_dos_Games/) ou abra localmente:
+Acesse o [link do GitHub Pages](https://maycondis.github.io/E-book-A_Evolucao_dos_Games/ebook.html) ou abra localmente:
 
 ```bash
-start index.html
+start ebook.html
 ```
 
 ### Exportar como PDF
 
 O e-book foi projetado com regras de `@media print` para sair fiel no papel:
 
-1. Abra `index.html` no Chrome ou Edge.
+1. Abra `ebook.html` no Chrome ou Edge.
 2. Pressione `Ctrl + P` ou clique no botão flutuante **"BAIXAR PDF"**.
 3. Selecione **"Salvar como PDF"**.
 4. ✅ Ative **"Gráficos de fundo"** (Background graphics).
@@ -69,7 +69,7 @@ O e-book foi projetado com regras de `@media print` para sair fiel no papel:
 O projeto tem um auditor embutido. Abra a página com `?debug` na URL:
 
 ```
-index.html?debug
+ebook.html?debug
 ```
 
 Qualquer folha cujo conteúdo ultrapasse o limite da A4 — e que seria cortada silenciosamente no PDF — aparece marcada em vermelho. O aviso também sai no console do navegador, sempre.
@@ -88,7 +88,7 @@ Qualquer folha cujo conteúdo ultrapasse o limite da A4 — e que seria cortada 
 
 ```
 📦 E-book-A_Evolucao_dos_Games
-├── 📄 index.html              # Conteúdo semântico do e-book (HTML5)
+├── 📄 ebook.html              # Conteúdo semântico do e-book (HTML5)
 ├── 📂 assets/
 │   ├── 📂 css/
 │   │   ├── 🎨 style.css       # Hub central de importação
@@ -124,6 +124,7 @@ Qualquer folha cujo conteúdo ultrapasse o limite da A4 — e que seria cortada 
 | Nome | R.A. |
 |------|------|
 | Gabriel Alves Moreira | H67HJ4 |
+| Maciel Costa da Silva | R280985 |
 | Maycon Douglas Inácio Silva | H719CD3 |
 
 ## ⚠️ Nota sobre GTA VI
